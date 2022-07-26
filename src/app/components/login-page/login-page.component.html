@@ -1,0 +1,211 @@
+<!-- --------------------------------- LOGIN ------------------------------------ -->
+
+<div class="container-fluid container-fondo">
+  <br />
+
+  <!-- --------------------------------- TITTLE ------------------------------------ -->
+  <div class="row">
+    <div class="card-container">
+      <div class="card col-md-6">
+        <div class="card-header">
+          <h3>Inicio de Sesion</h3>
+        </div>
+
+        <div class="card-body">
+          <!-- --------------------------------- FORM ------------------------------------ -->
+
+          <form (ngSubmit)="onSend()" [formGroup]="loginForm">
+            <div>
+              <!-- --------------------------------- EMAIL FIELD ------------------------------ -->
+
+              <label for="email" class="form-label"> Email:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="name"
+                name="name"
+                formControlName="email"
+                placeholder="Ingrese su e-mail"
+                required
+              />
+            </div>
+
+            <!-- ------------------------------ MAIL VALIDATIONS ------------------------- -->
+
+            <div
+              *ngIf="email?.touched && email?.errors?.['required']"
+              class="alert alert-danger"
+            >
+              El e-mail es requerido.
+            </div>
+            <div
+              *ngIf="email?.touched && email?.errors?.['email']"
+              class="alert alert-danger"
+            >
+              Debe ser una direccion de e-mail.
+            </div>
+
+            <br />
+
+            <!-- --------------------------------- PASSWORD FIELD ------------------------------ -->
+
+            <div>
+              <label for="password" class="form-label"> Contraseña:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                formControlName="password"
+                placeholder="Ingrese su contraseña"
+                required
+              />
+            </div>
+
+            <!-- --------------------------------- PASSWORD VALIDATIONS ------------------------------ -->
+
+
+            <div
+              *ngIf="password?.touched && password?.errors?.['required']"
+              class="alert alert-danger"
+            >
+              La contraseña es requerida.
+            </div>
+            <div
+              *ngIf="password?.touched && password?.errors?.['minlength']"
+              class="alert alert-danger"
+            >
+              La contraseña debe contener al menos
+              {{password?.errors?.['minlength']?.requiredLength}} caracteres.
+            </div>
+            <div
+              *ngIf="password?.touched && password?.errors?.['maxlength']"
+              class="alert alert-danger"
+            >
+              La contraseña no debe contener mas de
+              {{password?.errors?.['maxlength']?.requiredLength}} caracteres.
+            </div>
+
+            <br />
+            <div class="d-flex justify-content-between">
+              <!-- aca el type es sumbit pero cambie por advertencias de seguridad de google   -->
+              <button
+                type="nav"
+                class="btn btn-primary"
+                [disabled]="loginForm.invalid"
+              >
+                Iniciar Sesion
+              </button>
+              
+            </div>
+          </form>
+          <button type="nav" class="btn btn-primary" routerLink="/">
+            Volver
+          </button>
+          <br />
+
+          <div class="card-footer">
+            <!-- Para monitorEar los inputs -->
+            Monitoreo del json: {{ loginForm.value | json }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <section id="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Login</h4>
+                    </div>
+                    <div class="card-body">
+                        <form (submit)="login()">
+                            <div class="form-group">
+                                <label for="email"></label>
+                                <input type="email" class="form-control" name="email" [(ngModel)]="email" placeholder="name@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password"></label>
+                                <input type="password" class="form-control" name="password" [(ngModel)]="password" placeholder="password" required>
+                            </div>
+                            <input type="submit" value="login" class="btn btn-primary btn-block">
+                            <a routerLink="/" class="nav-link"><strong>Volver</strong></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> NO FUNCIONAN LAS VALIDACIONES -->
+
+<!-- Formulario reactivo del video yt28 dias aprendiendo -->
+<!-- <pre>{{ contactForm.Value | json }}</pre> -->
+<!-- <h1>Login Reactive</h1>
+<form (ngSubmit)="onSubmit( )" [formGroup]="contactForm">
+  <div>
+    <label for="name" class="form-label">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      name="name"
+      required
+      formControlName="name"
+    />
+    <div *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['required']" class="alert alert-danger"> This field is required</div>
+    <div *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['minlength']" class="alert alert-danger">Name must be longer than {{ contactForm.get('name')?.errors?.['minlength']?.requiredLength }} characters.</div>
+  </div>
+  <div class="mb-4 form-check">
+    <label for="checkAdult" class="form-label"
+      >Are you over 18 years of age</label
+    >
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="checkAdult"
+      name="checkAdult"
+      required
+      formControlName="checkAdult"
+    />
+    <div *ngIf="contactForm.get('checkAdult')?.touched && contactForm.get('checkAdult')?.errors?.['required']" class="alert alert-danger"> This field is required</div>
+  </div>
+  <div class="mb-4">
+    <label for="departament" class="form-label">Departament</label>
+    <select
+      name="departament"
+      id="departament"
+      class="form-select form-select-sm"
+      formControlName="departament"
+    >
+      <option selected>Open this select menu</option>
+      <option value="marketing">Marketing</option>
+      <option value="sales">Sales</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+  <div class="mb-4">
+    <label for="comment" class="form-label">Comments</label>
+    <textarea
+      class="form-control"
+      name="comment"
+      id="comment"
+      rows="4"
+      placeholder="Leave a comment........"
+      formControlName="comment"
+    ></textarea>
+    <div *ngIf="contactForm.get('comment')?.touched && contactForm.get('comment')?.errors?.['required']" class="alert alert-danger"> This field is required</div>
+  </div>
+  <div class="d-grid gap-2 col-4 float-end">
+    <button
+      type="submit"
+      class="btn btn-info btn-lg"
+      [disabled]="contactForm.invalid"
+    >
+      Send
+    </button>
+  </div>
+</form> -->

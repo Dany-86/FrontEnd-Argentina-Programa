@@ -1,0 +1,302 @@
+{
+  "name": "Daniel Alberto Amestoy",
+  "backImage": "../../../assets/profile-images/pexels-lukas-574069-editada.jpg",
+  "profilePhoto": "../../../assets/profile-images/foto perfil.jpg",
+  "profession": "Full Stack Developer jr",
+  "location": "Moreno",
+  "province": "Buenos Aires",
+  "country": "Argentina",
+  "contact": "daniel@mail.com",
+  "login": {
+    "mail": "daniel@mail.com",
+    "password": "1234"
+  },
+  "socialNetworks": {
+    "facebook": {
+      "icon": "",
+      "enabled": false,
+      "url": ""
+    },
+    "instagram": {
+      "icon": "fa-brands fa-instagram fa-lg",
+      "enabled": true,
+      "url": "https://www.instagram.com/invites/contact/?i=k2vjb2omyzuh&utm_content=2uyzxhk"
+    },
+    "twitter": {
+      "icon": "",
+      "enabled": false,
+      "url": ""
+    },
+    "linkedin": {
+      "icon": "fa-brands fa-linkedin-in fa-lg",
+      "enabled": true,
+      "url": "https://www.linkedin.com/in/daniel-amestoy-324ba2217"
+    },
+    "github": {
+      "icon": "fa-brands fa-github fa-lg",
+      "enabled": true,
+      "url": "https://github.com/Dany-86"
+    },
+    "gitlab": {
+      "icon": "fa-brands fa-gitlab fa-lg",
+      "enabled": true,
+      "url": "https://gitlab.com/Dany_86"
+    }
+  },
+  "aboutMe": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi.",
+  "experience": [
+    {
+      "position": "Full Stack Developer Jr.",
+      "company": "Departamento de Ciencia y Tecnologia de la Universidad Nacional del Oeste",
+      "img": "../../../assets/experience-image/uno-1.jpg",
+      "url": "",
+      "since": "2021",
+      "to": "2022",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
+    },
+    {
+      "position": "Cajero",
+      "company": "Cencosud S.A.",
+      "img": "../../../assets/experience-image/logo-cencosud2.jfif",
+      "url": "",
+      "since": "2008",
+      "to": "2022",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
+    },
+    {
+      "position": "Tecnico en Telefonia Celular",
+      "company": "Servicio Tecnico de Celulares",
+      "img": "/assets/experience-image/reparacion de celulares6.webp",
+      "url": "",
+      "since": "2014",
+      "to": "2016",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
+    },
+    {
+      "position": "Tecnico Matriculado en Aires Acondicionado",
+      "company": "Servicio Tecnico en Refrigeracion",
+      "img": "/assets/experience-image/reparación-del-aire-acondicionado-1.jpg",
+      "url": "",
+      "since": "2011",
+      "to": "2017",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
+    },
+    {
+      "position": "Cajero/Responsable de Cocina",
+      "company": "Mostaza S.A.",
+      "img": "../../../assets/experience-image/logo-mostaza-rojo.jpg",
+      "url": "",
+      "since": "2005",
+      "to": "2008",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
+    },
+    {
+      "position": "Armador de PC",
+      "company": "Armado y Mantenimiento de PC",
+      "img": "../../../assets/experience-image/armador-reparador-de-pc1.webp",
+      "url": "",
+      "since": "2003",
+      "to": "2005",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
+    }
+  ],
+  "education": [
+    {
+      "career": "Licenciatura Informatica",
+      "institution": "Universidad Nacional del Oeste",
+      "img": "../../../assets/education-images/uno-1.jpg",
+      "url": "",
+      "since": "2017",
+      "to": "2022",
+      "complete": "",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
+    },
+    {
+      "career": "Full Stack Developer",
+      "institution": "Argentina Programa",
+      "img": "../../../assets/education-images/logoAP.jpg",
+      "url": "",
+      "since": "2021",
+      "to": "2022",
+      "complete": "",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
+    },
+    {
+      "career": "Profesorado de Ingles",
+      "institution": "Intituto Superior Nro 21 Dr. Ricardo Rojas",
+      "img": "../../../assets/education-images/Rojas4.jpg",
+      "url": "",
+      "since": "2007",
+      "to": "2010",
+      "complete": "",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
+    },
+    {
+      "career": "Tecnico en Telefonia Celular",
+      "institution": "Centro Tecnologico en Informatica CABA",
+      "img": "../../../assets/education-images/centro-tecnologico-caba.webp",
+      "url": "",
+      "since": "2015",
+      "to": "2015",
+      "complete": "",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
+    },
+    {
+      "career": "Tecnico Matriculado en Aires Acondicionados",
+      "institution": "I.A.R.A.A. / Universidad Tecnologica Nacional",
+      "img": "../../../assets/education-images/utn1.png",
+      "url": "",
+      "since": "2012",
+      "to": "2012",
+      "complete": "",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
+    },
+    {
+      "career": "Ingenieria Electronica",
+      "institution": "Universidad Tecnologica Nacional",
+      "img": "../../../assets/education-images/utn1.png",
+      "url": "",
+      "since": "2004",
+      "to": "2006",
+      "complete": "",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
+    },
+    {
+      "career": "Tecnico Electromecanico",
+      "institution": "Escuela de Educacion Tecnica Nro 2 de Merlo",
+      "img": "../../../assets/education-images/tecnica2-merlo1.jpg",
+      "url": "",
+      "since": "2001",
+      "to": "2004",
+      "complete": "",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
+    }
+  ],
+  "hardAndSoftSkills": [
+    {
+      "skill": "html",
+      "percent": "70",
+      "img": "",
+      "url": "",
+      "colorCircle": "orange"
+    },
+    {
+      "skill": "css",
+      "percent": "60",
+      "img": "",
+      "url": "",
+      "colorCircle": "blue"
+    },
+    {
+      "skill": "javascript",
+      "percent": "50",
+      "img": "",
+      "url": "",
+      "colorCircle": "yellow"
+    },
+    {
+      "skill": "bootstrap",
+      "percent": "55",
+      "img": "",
+      "url": "",
+      "colorCircle": "violet"
+    },
+    {
+      "skill": "typescript",
+      "percent": "60",
+      "img": "",
+      "url": "",
+      "colorCircle": "blue"
+    },
+    {
+      "skill": "angular",
+      "percent": "50",
+      "img": "",
+      "url": "",
+      "colorCircle": "red"
+    },
+    {
+      "skill": "java",
+      "percent": "80",
+      "img": "",
+      "url": "",
+      "colorCircle": "red"
+    },
+    {
+      "skill": "spring",
+      "percent": "20",
+      "img": "",
+      "url": "",
+      "colorCircle": "green"
+    },
+    {
+      "skill": "c",
+      "percent": "35",
+      "img": "",
+      "url": "",
+      "colorCircle": "blue"
+    },
+    {
+      "skill": "ruby",
+      "percent": "35",
+      "img": "",
+      "url": "",
+      "colorCircle": "red"
+    },
+    {
+      "skill": "mysql",
+      "percent": "20",
+      "img": "",
+      "url": "",
+      "colorCircle": "blue"
+    },
+    {
+      "skill": "postgressql",
+      "percent": "10",
+      "img": "",
+      "url": "",
+      "colorCircle": "blue"
+    },
+    {
+      "skill": "firebase",
+      "percent": "40",
+      "img": "",
+      "url": "",
+      "colorCircle": "yellow"
+    },
+    {
+      "skill": "english",
+      "percent": "60",
+      "img": "",
+      "url": "",
+      "colorCircle": "black"
+    },
+    {
+      "skill": "team-work",
+      "percent": "80",
+      "img": "",
+      "url": "",
+      "colorCircle": "green"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Parkinsoft",
+      "company": "Departamento de Ciencia y Tecnologia de la Universidad Nacional del Oeste",
+      "img": "",
+      "url": "",
+      "since": "2021",
+      "to": "2022",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
+    },
+    {
+      "name": "Porfolio Web",
+      "company": "Argentina Programa",
+      "img": "",
+      "url": "",
+      "since": "2022",
+      "to": "2022",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
+    }
+  ]
+}

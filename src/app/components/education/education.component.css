@@ -1,0 +1,19 @@
+.flex-container-education{
+    display: flex;
+    padding: 2% 5%;
+    flex-wrap: wrap;
+}
+
+.flex-img{
+    display: flex;
+    justify-content: center;
+}
+
+.img-institution{
+    max-width: 200px;
+    border-radius: 20%;
+}
+
+.flex-tittle-time{
+    display: flex;
+}

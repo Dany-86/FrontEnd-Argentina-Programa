@@ -1,0 +1,33 @@
+<hr />
+<!-------------------------------- ESTUDIOS CURSADOS ------------------------------->
+
+<div class="container p-5">
+  <h1>Educacion y Formacion</h1>
+</div>
+
+<div *ngFor="let education of educationList" class="flex-container-education">
+  <div class="flex-img mr-5 col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <img
+      src="/assets/education-images/uno-1.jpg"
+      [alt]="education.institution"
+      class="img-institution"
+    />
+  </div>
+  <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+    <div class="flex-tittle-time">
+      <div>
+        <h3>{{ education.career }}</h3>
+      </div>
+      <div>
+        <h4>({{ education.since }} - {{ education.to }})</h4>
+      </div>
+    </div>
+
+    <div>
+      <h5>{{ education.institution }}</h5>
+    </div>
+    <div>
+      {{ education.description }}
+    </div>
+  </div>
+</div>

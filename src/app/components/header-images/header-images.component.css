@@ -1,0 +1,19 @@
+#imagesBP{
+    position: relative;
+}
+
+#banner{
+    width: 100%;
+    box-shadow: 0px 0px 10px black;
+}
+
+#profile-photo{
+    width: 20%;
+    max-width: 300px;
+    min-width: 130px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 50px black;
+    position: absolute;
+    left: 10%;
+    top: 75%;
+}
