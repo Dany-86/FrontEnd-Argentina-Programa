@@ -3,15 +3,14 @@
 
 <div class="container p-5">
   <h1>Proyectos</h1>
+  <a href="#">
+    <i class="fa-solid fa-plus"></i>
+  </a>
 </div>
 
 <div *ngFor="let project of projects" class="flex-container-project">
   <div class="flex-img mr-5 col-xs-12 col-sm-4 col-md-4 col-lg-4">
-    <img
-      src="../../../assets/uno-1.jpg"
-      [alt]="project.name"
-      class="img-work"
-    />
+    <img [src]="project.img" [alt]="project.name" class="img-work" />
   </div>
   <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
     <div class="flex-tittle-time">
@@ -29,5 +28,11 @@
     <div>
       {{ project.description }}
     </div>
+    <a href="#">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </a>
+    <a href="#">
+      <i class="fa-solid fa-trash-can"></i>
+    </a>
   </div>
 </div>

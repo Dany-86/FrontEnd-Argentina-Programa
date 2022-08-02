@@ -9,7 +9,12 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
 export class NavbarComponent implements OnInit {
 
   socialNetworks: any;
-  socialList = ['fa-brands', 'fa-instagram', 'fa-lg'];
+  facebookIconList = ['fa-brands', 'fa-facebook', 'fa-lg'];
+  instagramIconList = ['fa-brands', 'fa-instagram', 'fa-lg'];
+  twitterIconList = ['fa-brands', 'fa-twitter', 'fa-lg'];
+  linkedinIconList = ['fa-brands', 'fa-linkedin-in', 'fa-lg'];
+  gitHubIconList = ['fa-brands', 'fa-github', 'fa-lg'];
+  gitLabIconList = ['fa-brands', 'fa-gitlab', 'fa-lg'];
 
   constructor(private portfolioDataService: PortfolioService) { }
 

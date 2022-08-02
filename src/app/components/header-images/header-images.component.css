@@ -17,3 +17,15 @@
     left: 10%;
     top: 75%;
 }
+
+#edit-back{
+    position: absolute;
+    left: 92%;
+    top: 85%;
+}
+
+#edit-photo{
+    position: absolute;
+    left: 28%;
+    top: 113%;
+}

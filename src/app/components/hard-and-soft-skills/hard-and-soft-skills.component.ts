@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; 
+import { PortfolioService } from 'src/app/services/portfolio.service';
 
 @Component({
   selector: 'app-hard-and-soft-skills',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HardAndSoftSkillsComponent implements OnInit {
 
-  constructor() { }
+  skills: any;
+
+  constructor(private portfolioDataService: PortfolioService) { }
 
   ngOnInit(): void {
+    this.portfolioDataService.getData().subscribe(data => this.skills = data.skills)
   }
 
 }

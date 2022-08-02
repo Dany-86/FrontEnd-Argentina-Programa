@@ -1,10 +1,9 @@
 <!-- PROBLEMS A RESOLVER: 
-  FIXED Y STICKY CON OFF CANVAS Y MODALES DE BOOTSTRAP
-  ITERAR ICONOS DE FONTAWESOME (NO SE MUESTRAN) -->
+  FIXED Y STICKY CON OFF CANVAS Y MODALES DE BOOTSTRAP-->
 
 <!------------------------------ BARRA DE NAVEGACION ESTATICA ------------------------->
 
-<nav class="navbar navbar-expand-sm bg-light navbar-choto">
+<nav class="navbar navbar-expand-sm bg-light">
   <div class="container-fluid">
     <div class="col-6">
       <a
@@ -34,113 +33,24 @@
         aria-label="Toggle navigation"
       >
         <i class="fa-solid fa-bars"></i>
-        <!-- <span class="navbar-toggler-icon"></span> ---
-        (Icono default bootstrap no funciona bien)- -->
       </button>
 
-      <!--------------------------------- ICONOS DE REDES SOCIALES ---------------------->
+      <!--------------------------------CONOS REDES SOCIALES ---------------------------------->
 
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <!-- <li class="nav-item">
-            <a
-              class="nav-link"
-              [href]=""
-               target="_blank" 
-            >
-              <i
-                class=""
-                id="social-network-icon"
-              ></i>
-            </a>
-          </li> -->
-
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="https://www.instagram.com/invites/contact/?i=k2vjb2omyzuh&utm_content=2uyzxhk"
-              target="_blank"
-            >
-              <i
-                [ngClass]="socialList"                id="social-network-icon"
-              ></i>
-            </a>
-          </li>
-
-          <!-- <li class="nav-item">
-            <a
-              class="nav-link"
-              [href]=""
-               target="_blank" 
-            >
-              <i
-                class=""
-                id="social-network-icon"
-              ></i>
-            </a>
-          </li> -->
-
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="https://www.linkedin.com/in/daniel-amestoy-324ba2217"
-              target="_blank"
-            >
-              <i
-                class="fa-brands fa-linkedin-in fa-lg"
-                id="social-network-icon"
-              ></i>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="https://github.com/Dany-86"
-              target="_blank"
-            >
-              <i class="fa-brands fa-github fa-lg" id="social-network-icon"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="https://gitlab.com/Dany_86"
-              target="_blank"
-            >
-              <i class="fa-brands fa-gitlab fa-lg" id="social-network-icon"></i>
+        <ul *ngFor="let socialNetwork of socialNetworks" class="navbar-nav">
+          <li *ngIf="socialNetwork.enabled" class="nav-item">
+            <a class="nav-link" [href]="socialNetwork.url" target="_blank">
+              <i [class]="socialNetwork.icon" id="social-network-icon"></i>
             </a>
           </li>
         </ul>
+        <a href="#">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </a>
       </div>
       <a routerLink="/login" class="nav-link"><strong>Login</strong></a>
       <!--<app-login></app-login>   NO FUNCIONA CON EL NAVBAR ESTATICO -->
     </div>
-
-    <!-------------------------------------- LOGIN ---------------------------------------->
-    <!-- <button 
-      class="btn btn-dark" type="button"
-      data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
-      aria-controls="offcanvas"
-    >
-      Login
-    </button> -->
-
-    <!-- Offcanvas menu -->
-    <!-- <div 
-      class="offcanvas offcanvas-end slice-login" tabindex="-1"
-      id="offcanvas" aria-labelledby="offcanvasLabel"
-      
-    >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-tittle">
-         Login 
-        </h5>
-      </div>
-
-    </div> -->
-    <!-- Offcanvas menu -->
-
-    <!-------------------------------------- LOGIN ---------------------------------------->
   </div>
 </nav>

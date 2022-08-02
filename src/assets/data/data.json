@@ -11,44 +11,51 @@
     "mail": "daniel@mail.com",
     "password": "1234"
   },
-  "socialNetworks": {
-    "facebook": {
-      "icon": "",
+  "socialNetworks": [
+    {
+      "name": "facebook",
+      "icon": ["fa-brands", "fa-facebook", "fa-lg"],
       "enabled": false,
       "url": ""
     },
-    "instagram": {
-      "icon": "fa-brands fa-instagram fa-lg",
+    {
+      "name": "instagram",
+      "icon": ["fa-brands", "fa-instagram", "fa-lg"],
       "enabled": true,
       "url": "https://www.instagram.com/invites/contact/?i=k2vjb2omyzuh&utm_content=2uyzxhk"
     },
-    "twitter": {
-      "icon": "",
+    {
+      "name": "twitter",
+      "icon": ["fa-brands", "fa-twitter", "fa-lg"],
       "enabled": false,
       "url": ""
     },
-    "linkedin": {
-      "icon": "fa-brands fa-linkedin-in fa-lg",
+    {
+      "name": "linkedin",
+      "icon": ["fa-brands", "fa-linkedin-in", "fa-lg"],
       "enabled": true,
       "url": "https://www.linkedin.com/in/daniel-amestoy-324ba2217"
     },
-    "github": {
-      "icon": "fa-brands fa-github fa-lg",
+    {
+      "name": "github",
+      "icon": ["fa-brands", "fa-github", "fa-lg"],
       "enabled": true,
       "url": "https://github.com/Dany-86"
     },
-    "gitlab": {
-      "icon": "fa-brands fa-gitlab fa-lg",
+    {
+      "name": "gitlab",
+      "icon": ["fa-brands", "fa-gitlab", "fa-lg"],
       "enabled": true,
       "url": "https://gitlab.com/Dany_86"
     }
-  },
+  ],
+
   "aboutMe": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi.",
-  "experience": [
+  "experiences": [
     {
       "position": "Full Stack Developer Jr.",
       "company": "Departamento de Ciencia y Tecnologia de la Universidad Nacional del Oeste",
-      "img": "../../../assets/experience-image/uno-1.jpg",
+      "img": "/assets/experience-images/uno-1.jpg",
       "url": "",
       "since": "2021",
       "to": "2022",
@@ -57,7 +64,7 @@
     {
       "position": "Cajero",
       "company": "Cencosud S.A.",
-      "img": "../../../assets/experience-image/logo-cencosud2.jfif",
+      "img": "/assets/experience-images/logo-cencosud2.jfif",
       "url": "",
       "since": "2008",
       "to": "2022",
@@ -66,7 +73,7 @@
     {
       "position": "Tecnico en Telefonia Celular",
       "company": "Servicio Tecnico de Celulares",
-      "img": "/assets/experience-image/reparacion de celulares6.webp",
+      "img": "/assets/experience-images/reparacion de celulares6.webp",
       "url": "",
       "since": "2014",
       "to": "2016",
@@ -75,7 +82,7 @@
     {
       "position": "Tecnico Matriculado en Aires Acondicionado",
       "company": "Servicio Tecnico en Refrigeracion",
-      "img": "/assets/experience-image/reparación-del-aire-acondicionado-1.jpg",
+      "img": "/assets/experience-images/reparación-del-aire-acondicionado-1.jpg",
       "url": "",
       "since": "2011",
       "to": "2017",
@@ -84,7 +91,7 @@
     {
       "position": "Cajero/Responsable de Cocina",
       "company": "Mostaza S.A.",
-      "img": "../../../assets/experience-image/logo-mostaza-rojo.jpg",
+      "img": "/assets/experience-images/logo-mostaza-rojo.jpg",
       "url": "",
       "since": "2005",
       "to": "2008",
@@ -93,14 +100,14 @@
     {
       "position": "Armador de PC",
       "company": "Armado y Mantenimiento de PC",
-      "img": "../../../assets/experience-image/armador-reparador-de-pc1.webp",
+      "img": "/assets/experience-images/armador-reparador-de-pc1.webp",
       "url": "",
       "since": "2003",
       "to": "2005",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
     }
   ],
-  "education": [
+  "educations": [
     {
       "career": "Licenciatura Informatica",
       "institution": "Universidad Nacional del Oeste",
@@ -108,7 +115,7 @@
       "url": "",
       "since": "2017",
       "to": "2022",
-      "complete": "",
+      "complete": false,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
     },
     {
@@ -118,7 +125,7 @@
       "url": "",
       "since": "2021",
       "to": "2022",
-      "complete": "",
+      "complete": true,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
     },
     {
@@ -128,7 +135,7 @@
       "url": "",
       "since": "2007",
       "to": "2010",
-      "complete": "",
+      "complete": false,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
     },
     {
@@ -138,7 +145,7 @@
       "url": "",
       "since": "2015",
       "to": "2015",
-      "complete": "",
+      "complete": true,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
     },
     {
@@ -148,7 +155,7 @@
       "url": "",
       "since": "2012",
       "to": "2012",
-      "complete": "",
+      "complete": true,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
     },
     {
@@ -158,7 +165,7 @@
       "url": "",
       "since": "2004",
       "to": "2006",
-      "complete": "",
+      "complete": false,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
     },
     {
@@ -168,113 +175,113 @@
       "url": "",
       "since": "2001",
       "to": "2004",
-      "complete": "",
+      "complete": true,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam libero Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam liberoos dolore dolorum distinctio saepe sint nesciunt exercitationem.Dignissimos voluptates nulla reprehenderit assumenda delectus nostrumnihil, cumque placeat nisi."
     }
   ],
-  "hardAndSoftSkills": [
+  "skills": [
     {
-      "skill": "html",
-      "percent": "70",
-      "img": "",
+      "skill": "HTML",
+      "percent": "60",
+      "img": "/assets/hard-and-soft-skills-images/html.png",
       "url": "",
       "colorCircle": "orange"
     },
     {
-      "skill": "css",
-      "percent": "60",
-      "img": "",
+      "skill": "CSS",
+      "percent": "50",
+      "img": "/assets/hard-and-soft-skills-images/css.png",
       "url": "",
       "colorCircle": "blue"
     },
     {
-      "skill": "javascript",
-      "percent": "50",
-      "img": "",
+      "skill": "Javascript",
+      "percent": "40",
+      "img": "/assets/hard-and-soft-skills-images/javascript.png",
       "url": "",
       "colorCircle": "yellow"
     },
     {
-      "skill": "bootstrap",
-      "percent": "55",
-      "img": "",
+      "skill": "Bootstrap",
+      "percent": "50",
+      "img": "/assets/hard-and-soft-skills-images/bootstrap.png",
       "url": "",
       "colorCircle": "violet"
     },
     {
-      "skill": "typescript",
-      "percent": "60",
-      "img": "",
+      "skill": "Typescript",
+      "percent": "50",
+      "img": "/assets/hard-and-soft-skills-images/ts1.png",
       "url": "",
       "colorCircle": "blue"
     },
     {
-      "skill": "angular",
-      "percent": "50",
-      "img": "",
+      "skill": "Angular",
+      "percent": "40",
+      "img": "/assets/hard-and-soft-skills-images/algo.png",
       "url": "",
       "colorCircle": "red"
     },
     {
-      "skill": "java",
-      "percent": "80",
-      "img": "",
+      "skill": "Java",
+      "percent": "70",
+      "img": "/assets/hard-and-soft-skills-images/java.png",
       "url": "",
       "colorCircle": "red"
     },
     {
-      "skill": "spring",
+      "skill": "Spring",
       "percent": "20",
-      "img": "",
+      "img": "/assets/hard-and-soft-skills-images/spring.png",
       "url": "",
       "colorCircle": "green"
     },
     {
-      "skill": "c",
+      "skill": "C",
       "percent": "35",
-      "img": "",
+      "img": "/assets/hard-and-soft-skills-images/c.png",
       "url": "",
       "colorCircle": "blue"
     },
     {
-      "skill": "ruby",
+      "skill": "Ruby",
       "percent": "35",
-      "img": "",
+      "img": "/assets/hard-and-soft-skills-images/ruby.png",
       "url": "",
       "colorCircle": "red"
     },
     {
-      "skill": "mysql",
+      "skill": "MySql",
       "percent": "20",
-      "img": "",
+      "img": "/assets/hard-and-soft-skills-images/mysql.png",
       "url": "",
       "colorCircle": "blue"
     },
     {
-      "skill": "postgressql",
+      "skill": "PostgresSql",
       "percent": "10",
-      "img": "",
+      "img": "/assets/hard-and-soft-skills-images/postgre.png",
       "url": "",
       "colorCircle": "blue"
     },
     {
-      "skill": "firebase",
-      "percent": "40",
-      "img": "",
+      "skill": "Firebase",
+      "percent": "30",
+      "img": "/assets/hard-and-soft-skills-images/firebase.png",
       "url": "",
       "colorCircle": "yellow"
     },
     {
-      "skill": "english",
+      "skill": "English Language",
       "percent": "60",
-      "img": "",
+      "img": "/assets/hard-and-soft-skills-images/eng.png",
       "url": "",
       "colorCircle": "black"
     },
     {
-      "skill": "team-work",
+      "skill": "Team-Work",
       "percent": "80",
-      "img": "",
+      "img": "/assets/hard-and-soft-skills-images/team-work.png",
       "url": "",
       "colorCircle": "green"
     }
@@ -283,7 +290,7 @@
     {
       "name": "Parkinsoft",
       "company": "Departamento de Ciencia y Tecnologia de la Universidad Nacional del Oeste",
-      "img": "",
+      "img": "../../../assets/projects-images/uno-1.jpg",
       "url": "",
       "since": "2021",
       "to": "2022",
@@ -292,7 +299,7 @@
     {
       "name": "Porfolio Web",
       "company": "Argentina Programa",
-      "img": "",
+      "img": "../../../assets/projects-images/logoAP.jpg",
       "url": "",
       "since": "2022",
       "to": "2022",
