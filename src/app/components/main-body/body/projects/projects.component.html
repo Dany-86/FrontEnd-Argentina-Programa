@@ -1,0 +1,366 @@
+<!------------------------------------- PROYECTOS ------------------------------------------>
+
+<div class="project-container">
+  <div class="project-tittle-container">
+    <div>
+      <h1>Proyectos</h1>
+    </div>
+
+<!---------------------------- BOTON AGREGAR/APERTURA DE MODAL-------------------------->
+
+    <div class="btn-add">
+      <a
+        *ngIf="isLogged"
+        class="btn btn-primary"
+        href="#"
+        data-bs-toggle="modal"
+        data-bs-target="#addProjectModal"
+      >
+        <i class="fa-solid fa-plus"></i> Agregar
+      </a>
+    </div>
+  </div>
+  <hr />
+
+<!------------------------------------- PROYECTOS ----------------------------------->
+
+  <div
+    *ngFor="let project of projects; let i = index"
+    class="grid-container-projects"
+  >
+    <div class="tittle-container">
+      <h3>{{ project.name }}</h3>
+    </div>
+
+    <div class="time-container">
+      <h5>
+        <i>({{ project.since }} - {{ project.through }})</i>
+      </h5>
+    </div>
+
+    <div class="company-container">
+      <h5>
+        <i>{{ project.company }}</i>
+      </h5>
+    </div>
+
+    <div class="description-container">
+      {{ project.description }}
+    </div>
+
+    <div class="img-container">
+      <img
+        [src]="project.img"
+        [alt]="project.name"
+        class="img-work"
+        onerror="this.src='https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';"
+      />
+    </div>
+
+ <!---------------------------------------- BOTONES--------------------------------------->
+
+    <div class="btns-container">
+
+<!---------------------------- BOTON EDICION/APERTURA DE MODAL--------------------------->
+
+      <div class="btn-edit">
+        <a
+          *ngIf="isLogged"
+          class="btn btn-success"
+          href="#"
+          data-bs-toggle="modal"
+          data-bs-target="#editProjectModal"
+          (click)="
+            valuesAsign(
+              i,
+              project.id,
+              project.name,
+              project.company,
+              project.img,
+              project.url,
+              project.since,
+              project.through,
+              project.description
+            )
+          "
+        >
+          <i class="fa-solid fa-pen-to-square"></i> Editar
+        </a>
+      </div>
+
+<!---------------------------- BOTON BORRAR/APERTURA DE MODAL -------------------------->
+
+      <div class="btn-edit">
+        <a
+          *ngIf="isLogged"
+          class="btn btn-danger"
+          href="#"
+          data-bs-toggle="modal"
+          data-bs-target="#deleteProjectModal"
+          (click)="idAndIndexAsign(project.id, i)"
+        >
+          <i class="fa-solid fa-trash-can"></i> Borrar
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!---------------------------------- MODAL AGREGAR--------------------------------------->
+
+<div
+  class="modal fade"
+  id="addProjectModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="addProjectModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addProjectModalLabel">Nuevo Proyecto</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="resetAttributes()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form (ngSubmit)="onAddProject()" #f="ngForm">
+            <label>Nombre:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="position"
+              name="position"
+              placeholder="Ingrese su proyecto"
+              [(ngModel)]="name"
+            />
+            <label>Empresa:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="company"
+              name="company"
+              placeholder="Ingrese la empresa"
+              [(ngModel)]="company"
+            />
+            <label>Desde:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="since"
+              name="since"
+              placeholder="Inicio"
+              [(ngModel)]="since"
+            />
+            <label>Hasta:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="to"
+              name="to"
+              placeholder="Fin"
+              [(ngModel)]="through"
+            />
+            <label>Descripción:</label>
+            <textarea
+              type="textarea"
+              class="form-control"
+              id="description"
+              name="description"
+              placeholder="Agregue una breve descripcion de las tareas"
+              [(ngModel)]="description"
+              style="height: 150px"
+            ></textarea>
+            <label>Imagen:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="img"
+              name="img"
+              placeholder="Ingrese la url de la imagen"
+              [(ngModel)]="img"
+            />
+            <label>Link:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="url"
+              name="url"
+              placeholder="Ingrese un link de referencia"
+              [(ngModel)]="url"
+            />
+
+            <button
+              type="submit"
+              class="btn btn-primary btn-modal"
+              data-bs-dismiss="modal"
+            >
+              Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+
+<!---------------------------------------- MODAL EDITAR ----------------------------------->
+
+<div
+  class="modal fade"
+  id="editProjectModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="editProjectModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProjectModalLabel">
+          Modificar Proyecto
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="resetAttributes()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form (ngSubmit)="onEditProject()" #f="ngForm">
+            <label>Nombre:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="position"
+              name="position"
+              placeholder="Ingrese su proyecto"
+              [(ngModel)]="name"
+            />
+            <label>Empresa:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="company"
+              name="company"
+              placeholder="Ingrese la empresa"
+              [(ngModel)]="company"
+            />
+            <label>Desde:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="since"
+              name="since"
+              placeholder="Inicio"
+              [(ngModel)]="since"
+            />
+            <label>Hasta:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="to"
+              name="to"
+              placeholder="Fin"
+              [(ngModel)]="through"
+            />
+            <label>Descripción:</label>
+            <textarea
+              type="textarea"
+              class="form-control"
+              id="description"
+              name="description"
+              placeholder="Agregue una breve descripcion de las tareas"
+              [(ngModel)]="description"
+              style="height: 150px"
+            ></textarea>
+            <label>Imagen:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="img"
+              name="img"
+              placeholder="Ingrese la url de la imagen"
+              [(ngModel)]="img"
+            />
+            <label>Link:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="url"
+              name="url"
+              placeholder="Ingrese un link de referencia"
+              [(ngModel)]="url"
+            />
+
+            <button
+              type="submit"
+              class="btn btn-primary btn-modal"
+              data-bs-dismiss="modal"
+            >
+              Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+
+<!---------------------------------------- MODAL EDITAR ----------------------------------->
+
+<div
+  class="modal fade"
+  id="deleteProjectModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="deleteProjectModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteProjectModalLabel">
+          Borrar Proyecto
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="resetAttributes()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          ¿Está seguro que desea borrar este elemento proyecto?
+
+          <button
+            type="button"
+            class="btn btn-danger btn-modal"
+            data-bs-dismiss="modal"
+            style="cursor: pointer"
+            (click)="onDeleteProject()"
+          >
+            Borrar
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>

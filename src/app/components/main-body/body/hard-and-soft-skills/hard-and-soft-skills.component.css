@@ -1,0 +1,107 @@
+.skill-container {
+  background: rgb(250, 250, 250);
+  margin-bottom: 10px;
+  padding: 2%;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 20px;
+  border-color: rgb(187, 187, 187);
+}
+
+.skill-tittle-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+h1,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding: 0px;
+}
+
+.grid-container-skills {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.each-skill {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 20px;
+  border-color: rgb(187, 187, 187);
+  padding: 10px;
+  margin: 5px;
+  background: white;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+  transition: all 200ms ease;
+}
+
+.each-skill:hover {
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.8);
+  transform: translateY(-1%);
+}
+
+.tittle-container {
+  display: flex;
+  justify-content: center;
+}
+
+.circle-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btns-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  width: 100%;
+}
+
+.btn-add {
+  padding: 5px;
+  width: 130px;
+}
+
+.btn-edit {
+  margin: 0;
+  padding: 5px;
+  width: 130px;
+}
+
+.btn-modal {
+  margin: 10px 0px;
+}
+
+/* Media querys */
+
+/* Pantalla chica 680px */
+
+@media all and (max-width: 680px) {
+  .each-skill {
+    width: 100%;
+  }
+
+  .btn-edit {
+    width: 50%;
+  }
+}
+
+/* Pantalla chica 540px */
+
+@media all and (max-width: 540px) {
+  .btn-add {
+    width: 100%;
+  }
+
+  .skill-tittle-container {
+    justify-content: center;
+  }
+}

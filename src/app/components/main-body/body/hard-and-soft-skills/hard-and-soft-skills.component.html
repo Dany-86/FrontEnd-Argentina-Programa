@@ -1,0 +1,313 @@
+<!---------------------------------- HARD AND SOFT SKILLS --------------------------------->
+
+<div class="box skill-container">
+  <div class="skill-tittle-container">
+    <div>
+      <h1>Hard & Soft Skills</h1>
+    </div>
+
+<!-----------------------------BOTON AGREGAR/APERTURA DE MODAL------------------------->
+
+    <div class="btn-add">
+      <a
+        *ngIf="isLogged"
+        class="btn btn-primary"
+        href="#"
+        data-bs-toggle="modal"
+        data-bs-target="#addSkillModal"
+      >
+        <i class="fa-solid fa-plus"></i> Agregar
+      </a>
+    </div>
+  </div>
+  <hr />
+
+<!--------------------------------------- SKILLS -------------------------------------->
+
+  <div class="grid-container-skills">
+    <div *ngFor="let skill of skills; let i = index" class="each-skill">
+      <div class="tittle-container">
+        <h6>{{ skill.skill }}</h6>
+      </div>
+      <div class="circle-container">
+        <circle-progress
+          [percent]="skill.percent"
+          [radius]="100"
+          [outerStrokeWidth]="15"
+          [innerStrokeWidth]="10"
+          [outerStrokeColor]="skill.colorCircle"
+          [innerStrokeColor]="'#e7e8ea'"
+          [animation]="true"
+          [animationDuration]="300"
+          [showImage]="true"
+          [imageSrc]="skill.img"
+          [imageWidth]="100"
+          [imageHeight]="100"
+          [space]="-10"
+        ></circle-progress>
+      </div>
+
+<!------------------------------------- BOTONES -------------------------------------->
+
+      <div class="btns-container">
+
+<!-------------------------BOTON EDICION/APERTURA DE MODAL--------------------------->
+
+        <div class="btn-edit">
+          <a
+            *ngIf="isLogged"
+            class="btn btn-success"
+            href="#"
+            data-bs-toggle="modal"
+            data-bs-target="#editSkillModal"
+            (click)="
+              valuesAsign(
+                i,
+                skill.id,
+                skill.skill,
+                skill.percent,
+                skill.img,
+                skill.url,
+                skill.colorCircle
+              )">
+            <i class="fa-solid fa-pen-to-square"></i> Editar
+          </a>
+        </div>
+
+ <!--------------------------BOTON BORRAR/APERTURA DE MODAL--------------------------->
+
+        <div class="btn-edit">
+          <a
+            *ngIf="isLogged"
+            class="btn btn-danger"
+            href="#"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteSkillModal"
+            (click)="idAndIndexAsign(skill.id, i)"
+          >
+            <i class="fa-solid fa-trash-can"></i> Borrar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------------- MODAL AGREGAR------------------------------------>
+
+<div
+  class="modal fade"
+  id="addSkillModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="addModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addSkillModalLabel">Nueva Habilidad</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="resetAttributes()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form (ngSubmit)="onAddSkill()" #f="ngForm">
+            <label>Habilidad:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="skill"
+              name="skill"
+              placeholder="Ingrese la habilidad"
+              [(ngModel)]="skill"
+            />
+            <label>Nivel (0% - 100%):</label>
+            <input
+              type="number"
+              class="form-control"
+              id="percent"
+              name="percent"
+              placeholder="Ingrese el porcentaje"
+              [(ngModel)]="percent"
+            />
+            <label>Imagen:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="img"
+              name="img"
+              placeholder="Ingrese la url de la imagen"
+              [(ngModel)]="img"
+            />
+            <label>Color:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="colorCircle"
+              name="colorCircle"
+              placeholder="Ingrese el color"
+              [(ngModel)]="colorCircle"
+            />
+            <label>Link:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="url"
+              name="url"
+              placeholder="Ingrese un link de referencia"
+              [(ngModel)]="url"
+            />
+
+            <button
+              type="submit"
+              class="btn btn-primary btn-modal"
+              data-bs-dismiss="modal"
+            >
+              Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+
+<!------------------------------------- MODAL EDITAR ------------------------------->
+
+<div
+  class="modal fade"
+  id="editSkillModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="editSkillModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editSkillModalLabel">
+          Modificar Habilidad
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="resetAttributes()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form (ngSubmit)="onEditSkill()" #f="ngForm">
+            <label>Habilidad:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="skill"
+              name="skill"
+              placeholder="Ingrese la habilidad"
+              [(ngModel)]="skill"
+            />
+            <label>Nivel (0% - 100%):</label>
+            <input
+              type="number"
+              class="form-control"
+              id="percent"
+              name="percent"
+              placeholder="Ingrese el porcentaje"
+              [(ngModel)]="percent"
+            />
+            <label>Imagen:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="img"
+              name="img"
+              placeholder="Ingrese la url de la imagen"
+              [(ngModel)]="img"
+            />
+            <label>Color:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="colorCircle"
+              name="colorCircle"
+              placeholder="Ingrese el color"
+              [(ngModel)]="colorCircle"
+            />
+            <label>Link:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="url"
+              name="url"
+              placeholder="Ingrese un link de referencia"
+              [(ngModel)]="url"
+            />
+
+            <button
+              type="submit"
+              class="btn btn-primary btn-modal"
+              data-bs-dismiss="modal"
+            >
+              Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------------------- MODAL BORRAR --------------------------------->
+
+<div
+  class="modal fade"
+  id="deleteSkillModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="deleteSkillModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteSkillModalLabel">Borrar Habilidad</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="resetAttributes()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          ¿Está seguro que desea borrar ésta habilidad?
+
+          <button
+            type="button"
+            class="btn btn-danger btn-modal"
+            data-bs-dismiss="modal"
+            style="cursor: pointer"
+            (click)="onDeleteSkill()"
+          >
+            Borrar
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>

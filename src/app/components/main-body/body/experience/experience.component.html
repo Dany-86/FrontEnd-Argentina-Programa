@@ -1,0 +1,369 @@
+<!-------------------------------- EXPERIENCIA LABORAL ---------------------------------->
+
+<div class="experience-container">
+  <div class="experience-tittle-container">
+    <div>
+      <h1>Experiencia Laboral</h1>
+    </div>
+
+    <!-------------------------- BOTON AGREGAR/APERTURA DE MODAL-------------------------->
+
+    <div class="btn-add">
+      <a
+        *ngIf="isLogged"
+        class="btn btn-primary"
+        href="#"
+        data-bs-toggle="modal"
+        data-bs-target="#addExperienceModal"
+      >
+        <i class="fa-solid fa-plus"></i> Agregar
+      </a>
+    </div>
+  </div>
+  <hr />
+
+  <!------------------------------------- EXPERIENCIAS ----------------------------------->
+
+  <div
+    *ngFor="let experience of experiences; let i = index"
+    class="grid-container-experiences"
+  >
+      
+        <div class="tittle-container">
+          <h3>{{ experience.company }}</h3>
+        </div>
+
+        <div class="time-container">
+          <h6><i>({{ experience.since }} - {{ experience.through }})</i> </h6>
+        </div>
+
+      <div class="position-container">
+        <h5><i>{{ experience.position }}</i></h5>
+      </div>
+
+      <div class="description-container">{{ experience.description }}</div>
+
+      <div class="img-container">
+        <img
+          [src]="experience.img"
+          [alt]="experience.company"
+          onerror="this.src='https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';"
+          class="img-work"s
+        />
+      </div>
+
+    <!---------------------------------------- BOTONES--------------------------------------->
+
+    <div class="btns-container">
+
+      <!---------------------------- BOTON EDICION/APERTURA DE MODAL--------------------------->
+
+      <div class="btn-edit">
+        <a
+          *ngIf="isLogged"
+          class="btn btn-success"
+          href="#"
+          data-bs-toggle="modal"
+          data-bs-target="#editExperienceModal"
+          (click)="
+            valuesAsign(
+              i,
+              experience.id,
+              experience.position,
+              experience.company,
+              experience.since,
+              experience.through,
+              experience.description,
+              experience.img,
+              experience.url
+            )
+          "
+        >
+          <i class="fa-solid fa-pen-to-square"></i> Editar
+        </a>
+      </div>
+
+ <!---------------------------- BOTON BORRAR/APERTURA DE MODAL -------------------------->
+
+      <div class="btn-edit">
+        <a
+          *ngIf="isLogged"
+          class="btn btn-danger"
+          href="#"
+          data-bs-toggle="modal"
+          data-bs-target="#deleteExperienceModal"
+          (click)="idAndIndexAsign(experience.id, i)"
+        >
+          <i class="fa-solid fa-trash-can"></i> Borrar
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!---------------------------------- MODAL AGREGAR--------------------------------------->
+
+<div
+  class="modal fade"
+  id="addExperienceModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="addExperienceModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addExperienceModalLabel">
+          Nueva Experiencia Laboral
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="resetAttributes()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form (ngSubmit)="onAddExperience()" #f="ngForm">
+            <label>Puesto:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="position"
+              name="position"
+              placeholder="Ingrese su experiencia"
+              [(ngModel)]="position"
+            />
+            <label>Empresa:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="company"
+              name="company"
+              placeholder="Ingrese la empresa"
+              [(ngModel)]="company"
+            />
+            <label>Desde:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="since"
+              name="since"
+              placeholder="Inicio"
+              [(ngModel)]="since"
+            />
+            <label>Hasta:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="through"
+              name="through"
+              placeholder="Fin"
+              [(ngModel)]="through"
+            />
+            <label>Descripcion:</label>
+            <textarea
+              type="textarea"
+              class="form-control"
+              id="description"
+              name="description"
+              placeholder="Agregue una breve descripcion de las tareas"
+              [(ngModel)]="description"
+              style="height: 150px"
+            ></textarea>
+            <label>Imagen:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="img"
+              name="img"
+              placeholder="Ingrese la url de la imagen"
+              [(ngModel)]="img"
+            />
+            <label>Link:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="url"
+              name="url"
+              placeholder="Ingrese un link de referencia"
+              [(ngModel)]="url"
+            />
+
+            <button
+              type="submit"
+              class="btn btn-primary btn-modal"
+              data-bs-dismiss="modal"
+            >
+              Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+
+<!---------------------------------------- MODAL EDITAR ----------------------------------->
+
+<div
+  class="modal fade"
+  id="editExperienceModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="editExperienceModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editExperienceModalLabel">
+          Modificar Experiencia Laboral
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="resetAttributes()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form (ngSubmit)="onEdit()" #f="ngForm">
+            <label>Puesto:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="position"
+              name="position"
+              placeholder="Ingrese su experiencia"
+              [(ngModel)]="position"
+            />
+
+            <label>Empresa:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="company"
+              name="company"
+              placeholder="Ingrese la empresa"
+              [(ngModel)]="company"
+            />
+            <label>Desde:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="since"
+              name="since"
+              placeholder="Inicio"
+              [(ngModel)]="since"
+            />
+            <label>Hasta:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="through"
+              name="through"
+              placeholder="Fin"
+              [(ngModel)]="through"
+            />
+            <label>Descripcion:</label>
+            <textarea
+              type="textarea"
+              class="form-control"
+              id="description"
+              name="description"
+              placeholder="Agregue una breve descripcion de las tareas"
+              [(ngModel)]="description"
+              style="height: 150px"
+            ></textarea>
+            <label>Imagen:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="img"
+              name="img"
+              placeholder="Ingrese la url de la imagen"
+              [(ngModel)]="img"
+            />
+            <label>Link:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="url"
+              name="url"
+              placeholder="Ingrese un link de referencia"
+              [(ngModel)]="url"
+            />
+
+            <button
+              type="submit"
+              class="btn btn-primary btn-modal"
+              data-bs-dismiss="modal"
+            >
+              Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!---------------------------------------- MODAL EDITAR ----------------------------------->
+
+<div
+  class="modal fade"
+  id="deleteExperienceModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="deleteExperienceModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteExperienceModalLabel">
+          Borrar Experiencia Laboral
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="resetAttributes()"
+        ></button>
+      </div>
+
+      <!-- CUERPO -->
+      <div class="modal-body">
+        <div class="container">
+          <form (ngSubmit)="onDeleteExperience()" #f="ngForm">
+            ¿Esta seguro que desea borrar este elemento de experiencia?
+
+            <button
+              type="submit"
+              class="btn btn-danger btn-modal"
+              data-bs-dismiss="modal"
+            >
+              Borrar
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>

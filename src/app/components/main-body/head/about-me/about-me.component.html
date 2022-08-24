@@ -1,0 +1,218 @@
+<!----------------------------------- INFO PERFIL --------------------------------------->
+
+  <div class="about-me-container">
+    <div class="profile-text-container">
+      <div class="profile-content">
+        <div>
+          <h2>{{ profileInfo.name }}</h2>
+        </div>
+        <div>
+          <p>
+            <strong>{{ profileInfo.profession }}</strong>
+          </p>
+        </div>
+        <div>
+          <p>
+            {{ profileInfo.location }}, {{ profileInfo.province }},{{
+              profileInfo.country
+            }}
+          </p>
+        </div>
+        <div>
+          <a [href]="profileInfo.contact" target="_blank">contacto</a>
+        </div>
+      </div>
+
+ <!------------------------ BOTON EDICION PERFIL / APERTURA DE MODAL------------------>
+
+      <div class="btn-edit">
+        <a
+          *ngIf="isLogged"
+          class="btn btn-primary"
+          href="#"
+          data-bs-toggle="modal"
+          data-bs-target="#profileModal"
+          (click)="onSetValueProfile()"
+        >
+          <i class="fa-solid fa-user-pen fa-lg"></i> Modificar Datos
+        </a>
+      </div>
+    </div>
+
+<!---------- --------------------  ACERCA DE MI --------------------------------------->
+
+    <div class="about-me-text-container">
+      <div class="about-me-content">
+        <div>
+          <h2>Acerca de mí</h2>
+        </div>
+        <div>
+          <p>{{ aboutMe.aboutMe }}</p>
+        </div>
+      </div>
+
+<!------------------------ BOTON EDICION ACERCA DE MI/ APERTURA DE MODAL---------------->
+
+      <div class="btn-edit">
+        <a
+          *ngIf="isLogged"
+          class="btn btn-primary"
+          href="#"
+          data-bs-toggle="modal"
+          data-bs-target="#aboutMeModal"
+          (click)="onSetValueAboutMe()"
+        >
+          <i class="fa-solid fa-file-pen fa-lg"></i> Modificar Texto
+        </a>
+      </div>
+    </div>
+  </div>
+
+<!--------------------------------------- MODALES -------------------------------------->
+
+<!--------------------------------- MODAL EDICION PERFIL ------------------------------->
+
+<div
+  class="modal fade"
+  id="profileModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="profileModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="profileModalLabel">
+          Editar Información de Perfil
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form
+        [formGroup]="profileForm"
+        (ngSubmit)="onSaveProfileInfo(profileForm.value)"
+      >
+        <div class="modal-body">
+          <div class="container">
+            <label>Nombre completo:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ingrese su nombre completo"
+              formControlName="name"
+            />
+            <label>Profesión:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ingrese su profesion"
+              formControlName="profession"
+            />
+            <label>Localidad:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ingrese su localidad"
+              formControlName="location"
+            />
+            <label>Provincia:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ingrese su provincia"
+              formControlName="province"
+            />
+            <label>País:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ingrese su pais"
+              formControlName="country"
+            />
+            <label>E-mail:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ingrese su e-mail"
+              formControlName="contact"
+            />
+          </div>
+          <div>
+            <button
+              type="submit"
+              class="btn btn-primary btn-modal"
+              data-bs-dismiss="modal"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+      </form>
+      <div class="modal-body">
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!------------------------------- MODAL EDICION ACERCA DE MI-------------------------->
+
+<div
+  class="modal fade"
+  id="aboutMeModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="aboutMeModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="aboutMeModalLabel">Acerca de ti</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <form
+        [formGroup]="aboutMeForm"
+        (ngSubmit)="onSaveAboutMe(aboutMeForm.value)"
+      >
+        <div class="modal-body">
+          <div class="container">
+            <textarea
+              type="textarea"
+              class="form-control"
+              placeholder="Escribe algo acerca de ti..."
+              formControlName="aboutMe"
+              style="height: 150px"
+            ></textarea>
+          </div>
+          <div>
+            <button
+              type="submit"
+              class="btn btn-primary btn-modal"
+              data-bs-dismiss="modal"
+              style="cursor: pointer"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+      </form>
+        <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+
+<!------------------------------- ------------------------------------------------->

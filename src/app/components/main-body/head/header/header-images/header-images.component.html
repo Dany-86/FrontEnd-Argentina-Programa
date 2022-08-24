@@ -1,0 +1,122 @@
+<!-------------------------------- BANNER Y FOTO DE PERFIL --------------------------->
+
+<div class="images-container box">
+    <img
+      [src]="backImage.url"
+      alt="Portada"
+      onerror="this.src='https://www.manualesderecargas.com/images/gris.png';"
+      id="banner"
+    />
+    <img
+      [src]="profilePhoto.url"
+      alt="Foto de Perfil"
+      onerror="this.src='https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';"
+      id="profile-photo"
+    />
+
+<!------------------------ BOTON CAMBIAR PORTADA/ APERTURA DE MODAL----------------------->
+
+    <a *ngIf="isLogged" href="#" data-bs-toggle="modal" data-bs-target="#editBackModal" id="edit-back" (click)="onSetValueBackImage()">
+      <i class="fa-solid fa-pen-to-square fa-2x fa-fade" style="color: black;" ></i>
+    </a>
+
+<!------------------------ BOTON CAMBIAR FOTO/ APERTURA DE MODAL---------------------------->
+
+    <a *ngIf="isLogged" href="#" data-bs-toggle="modal" data-bs-target="#editPhotoModal" id="edit-photo" (click)="onSetValueProfilePhoto()">
+      <i class="fa-solid fa-pen-to-square fa-2x fa-fade" style="color: black;" ></i> 
+    </a>
+  </div>
+  
+<!---------------------------------- MODAL CAMBIAR PORTADA---------------------------------->
+
+<div
+  class="modal fade"
+  id="editBackModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="editBackModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editBackModalLabel">
+          Cambiar Portada
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form [formGroup]="backImageForm" (ngSubmit)="onChangeBackImg(backImageForm.value)">
+        <div class="container mb-3">
+        <label>Desde una url:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ingrese la url"
+              formControlName="url"
+            />
+        <button 
+            type="submit" 
+            class="btn btn-primary btn-modal" 
+            data-bs-dismiss="modal"
+            style="cursor: pointer"
+            >
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!---------------------------------- MODAL CAMBIAR FOTO---------------------------------->
+
+<div
+  class="modal fade"
+  id="editPhotoModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="editPhotoModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editPhotoModalLabel">
+          Cambiar Foto de Perfil
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form [formGroup]="profilePhotoForm" (ngSubmit)="onChangePhoto(profilePhotoForm.value)">
+        <div class="container mb-3">
+        <label>Desde una url:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ingrese la url"
+              formControlName="url"
+            />
+        <button 
+            type="submit" 
+            class="btn btn-primary btn-modal" 
+            data-bs-dismiss="modal"
+            style="cursor: pointer"
+            >
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

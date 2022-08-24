@@ -1,0 +1,146 @@
+<!-- PROBLEMS A RESOLVER:       FIXED Y STICKY CON OFF CANVAS Y MODALES DE BOOTSTRAP-->
+
+<!------------------------------ BARRA DE NAVEGACION ESTATICA ------------------------->
+
+<nav class="navbar navbar-expand-sm bg-light">
+  <div class="container-fluid">
+    <div class="col-6">
+      <a
+        class="nav-link p-0"
+        href="https://www.argentina.gob.ar/produccion/argentina-programa/segunda-etapa"
+        target="_blank"
+      >
+        <img
+          src="../../../assets/navbar-header-images/arg-programa.png"
+          alt="Logo-Argentina-Programa"
+          class="argentina-programa-logo"
+        />
+        <strong id="yo-programo">#YoProgramo</strong>
+      </a>
+    </div>
+
+<!---------------------------- BOTON DE COLAPSAMIENTO DE ICONOS ---------------------->
+
+    <div class="d-inline-flex">
+      <button
+        class="navbar-toggler p-2"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+<!-----------------------------ICONOS REDES SOCIALES --------------------------------->
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul *ngFor="let socialNetwork of socialNetworksList" class="navbar-nav">
+          <li *ngIf="socialNetwork.enabled" class="nav-item">
+            <a class="nav-link" [href]="socialNetwork.url" target="_blank">
+              <i [class]="socialNetwork.icon" id="social-network-icon"></i>
+            </a>
+          </li>
+        </ul>
+
+<!------------------------ BOTON EDICION REDES/ APERTURA DE MODAL---------------------->
+
+        <a
+          *ngIf="isLogged"
+          href="#"
+          data-bs-toggle="modal"
+          data-bs-target="#iconsModal"
+        >
+          <i
+            class="fa-solid fa-pen-to-square fa-fade"
+            style="color: black"
+            id="edition-btn"
+          ></i>
+        </a>
+      </div>
+
+<!------------------------------ MODAL EDICION REDES SOCIALES -------------------------->
+
+      <div
+        class="modal fade"
+        id="iconsModal"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="iconsModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="iconsModalLabel">
+                Elige tus Redes Sociales
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div
+                *ngFor="let socialNetwork of socialNetworksList; let i = index"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    [(ngModel)]="socialNetwork.enabled"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    {{ socialNetwork.name }}
+                  </label>
+                  <div class="container">
+                    <label>Link:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder=""
+                      [(ngModel)]="socialNetwork.url"
+                      [disabled]="!socialNetwork.enabled"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-primary btn-modal"
+                data-bs-dismiss="modal"
+                style="cursor: pointer"
+                (click)="onEditSocialNetworks()"
+              >
+                Guardar
+              </button>
+            </div>
+            <div class="modal-footer"></div>
+          </div>
+        </div>
+      </div>
+
+<!----------------------------------------- LOGIN ---------------------------------------->
+
+      <a *ngIf="!isLogged" routerLink="/login" class="nav-link"
+        ><strong>Login</strong></a
+      >
+      <a
+        *ngIf="isLogged"
+        style="cursor: pointer"
+        class="nav-link"
+        (click)="onLogOut()"
+        ><strong>Logout</strong></a
+      >
+<!---------------<app-login></app-login>   NO FUNCIONA CON EL NAVBAR ESTATICO ------------->
+    </div>
+  </div>
+</nav>

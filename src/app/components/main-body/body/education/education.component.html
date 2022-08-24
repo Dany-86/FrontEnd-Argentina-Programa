@@ -1,0 +1,364 @@
+<!-------------------------------- EDUCACION--------- ------------------------------->
+
+<div class="education-container">
+  <div class="education-tittle-container">
+    <div>
+      <h1>Educación y Formación</h1>
+    </div>
+
+<!-------------------------- BOTON AGREGAR/APERTURA DE MODAL-------------------------->
+
+    <div class="btn-add">
+      <a
+        *ngIf="isLogged"
+        class="btn btn-primary"
+        href="#"
+        data-bs-toggle="modal"
+        data-bs-target="#addEducationModal"
+      >
+        <i class="fa-solid fa-plus" alt="+"></i> Agregar
+      </a>
+    </div>
+  </div>
+  <hr />
+
+<!--------------------------------- ESTUDIOS CURSADOS --------------------------------->
+
+  <div
+    *ngFor="let education of educations; let i = index"
+    class="grid-container-educations"
+  >
+    <div class="tittle-container">
+      <h3>{{ education.career }}</h3>
+    </div>
+
+    <div class="time-container">
+      <h5><i>({{ education.since }} - {{ education.through }})</i></h5>
+    </div>
+
+    <div class="institution-container">
+      <h5><i>{{ education.institution }}</i></h5>
+    </div>
+
+    <div class="description-container">
+      {{ education.description }}
+    </div>
+
+    <div class="img-container">
+      <img
+        [src]="education.img"
+        [alt]="education.institution"
+        class="img-institution"
+        onerror="this.src='https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';"
+      />
+    </div>
+
+<!---------------------------------------- BOTONES--------------------------------------->
+
+    <div class="btns-container">
+
+<!---------------------------- BOTON EDICION/APERTURA DE MODAL--------------------------->
+
+      <div class="btn-edit">
+        <a
+          *ngIf="isLogged"
+          class="btn btn-success"
+          href="#"
+          data-bs-toggle="modal"
+          data-bs-target="#editEducationModal"
+          (click)="
+            valuesAsign(
+              i,
+              education.id,
+              education.career,
+              education.institution,
+              education.img,
+              education.url,
+              education.since,
+              education.through,
+              education.complete,
+              education.description
+            )">
+          <i class="fa-solid fa-pen-to-square"></i> Editar
+        </a>
+      </div>
+
+<!---------------------------- BOTON BORRAR/APERTURA DE MODAL -------------------------->
+
+      <div class="btn-edit">
+        <a
+          *ngIf="isLogged"
+          class="btn btn-danger"
+          href="#"
+          data-bs-toggle="modal"
+          data-bs-target="#deleteEducationModal"
+          (click)="idAndIndexAsign(education.id, i)"
+        >
+          <i class="fa-solid fa-trash-can"></i> Borrar
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!---------------------------------- MODAL AGREGAR--------------------------------------->
+
+<div
+  class="modal fade"
+  id="addEducationModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="addEducationModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addEducationModalLabel">Nueva Formación</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="resetAttributes()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form (ngSubmit)="onAddEducation()" #f="ngForm">
+            <label>Título:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="career"
+              name="career"
+              placeholder="Ingrese su estudio"
+              [(ngModel)]="career"
+            />
+            <label>Institución:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="institution"
+              name="institution"
+              placeholder="Ingrese la institución"
+              [(ngModel)]="institution"
+            />
+            <label>Desde:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="since"
+              name="since"
+              placeholder="Inicio"
+              [(ngModel)]="since"
+            />
+            <label>Hasta:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="to"
+              name="to"
+              placeholder="Fin"
+              [(ngModel)]="through"
+            />
+            <label>Descripción:</label>
+            <textarea
+              type="textarea"
+              class="form-control"
+              id="description"
+              name="description"
+              placeholder="Agregue una breve descripcion"
+              [(ngModel)]="description"
+              style="height: 150px"
+            ></textarea>
+            <label>Imagen:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="img"
+              name="img"
+              placeholder="Ingrese la url de la imagen"
+              [(ngModel)]="img"
+            />
+            <label>Link:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="url"
+              name="url"
+              placeholder="Ingrese un link de referencia"
+              [(ngModel)]="url"
+            />
+
+            <button
+              type="submit"
+              class="btn btn-primary btn-modal"
+              data-bs-dismiss="modal"
+            >
+              Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+
+<!---------------------------------------- MODAL EDITAR ----------------------------------->
+
+<div
+  class="modal fade"
+  id="editEducationModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="editEducationModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editEducationModalLabel">
+          Modificar Formación
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="resetAttributes()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form (ngSubmit)="onEditEducation()" #f="ngForm">
+            <label>Título:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="career"
+              name="career"
+              placeholder="Ingrese su estudio"
+              [(ngModel)]="career"
+            />
+            <label>Institución:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="institution"
+              name="institution"
+              placeholder="Ingrese la institución"
+              [(ngModel)]="institution"
+            />
+            <label>Desde:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="since"
+              name="since"
+              placeholder="Inicio"
+              [(ngModel)]="since"
+            />
+            <label>Hasta:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="to"
+              name="to"
+              placeholder="Fin"
+              [(ngModel)]="through"
+            />
+            <label>Descripción:</label>
+            <textarea
+              type="textarea"
+              class="form-control"
+              id="description"
+              name="description"
+              placeholder="Agregue una breve descripcion"
+              [(ngModel)]="description"
+              style="height: 150px"
+            ></textarea>
+            <label>Imagen:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="img"
+              name="img"
+              placeholder="Ingrese la url de la imagen"
+              [(ngModel)]="img"
+            />
+            <label>Link:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="url"
+              name="url"
+              placeholder="Ingrese un link de referencia"
+              [(ngModel)]="url"
+            />
+
+            <button
+              type="submit"
+              class="btn btn-primary btn-modal"
+              data-bs-dismiss="modal"
+            >
+              Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+
+<!---------------------------------------- MODAL EDITAR ----------------------------------->
+
+<div
+  class="modal fade"
+  id="deleteEducationModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="deleteEducationModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteEducationModalLabel">
+          Borrar Formación
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="resetAttributes()"
+        ></button>
+      </div>
+
+      <!-- CUERPO -->
+
+      <div class="modal-body">
+        <div class="container">
+          ¿Está seguro que desea borrar este elemento de educación?
+
+          <button
+            type="button"
+            class="btn btn-danger btn-modal"
+            data-bs-dismiss="modal"
+            style="cursor: pointer"
+            (click)="onDeleteEducation()"
+          >
+            Borrar
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>

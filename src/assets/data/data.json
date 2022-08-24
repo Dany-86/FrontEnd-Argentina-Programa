@@ -1,49 +1,49 @@
 {
-  "name": "Daniel Alberto Amestoy",
-  "backImage": "../../../assets/profile-images/pexels-lukas-574069-editada.jpg",
-  "profilePhoto": "../../../assets/profile-images/foto perfil.jpg",
+  "fullName": "Daniel Alberto Amestoy",
+  "backImage": "/assets/profile-images/pexels-lukas-574069-editada.jpg",
+  "profilePhoto": "/assets/profile-images/foto perfil.jpg",
   "profession": "Full Stack Developer jr",
   "location": "Moreno",
   "province": "Buenos Aires",
   "country": "Argentina",
-  "contact": "daniel@mail.com",
+  "contact": "https://www.linkedin.com/in/daniel-amestoy-324ba2217",
   "login": {
     "mail": "daniel@mail.com",
     "password": "1234"
   },
   "socialNetworks": [
     {
-      "name": "facebook",
+      "name": "Facebook",
       "icon": ["fa-brands", "fa-facebook", "fa-lg"],
       "enabled": false,
       "url": ""
     },
     {
-      "name": "instagram",
+      "name": "Instagram",
       "icon": ["fa-brands", "fa-instagram", "fa-lg"],
       "enabled": true,
       "url": "https://www.instagram.com/invites/contact/?i=k2vjb2omyzuh&utm_content=2uyzxhk"
     },
     {
-      "name": "twitter",
+      "name": "Twitter",
       "icon": ["fa-brands", "fa-twitter", "fa-lg"],
       "enabled": false,
       "url": ""
     },
     {
-      "name": "linkedin",
+      "name": "Linkedin",
       "icon": ["fa-brands", "fa-linkedin-in", "fa-lg"],
       "enabled": true,
       "url": "https://www.linkedin.com/in/daniel-amestoy-324ba2217"
     },
     {
-      "name": "github",
+      "name": "Github",
       "icon": ["fa-brands", "fa-github", "fa-lg"],
       "enabled": true,
       "url": "https://github.com/Dany-86"
     },
     {
-      "name": "gitlab",
+      "name": "Gitlab",
       "icon": ["fa-brands", "fa-gitlab", "fa-lg"],
       "enabled": true,
       "url": "https://gitlab.com/Dany_86"
