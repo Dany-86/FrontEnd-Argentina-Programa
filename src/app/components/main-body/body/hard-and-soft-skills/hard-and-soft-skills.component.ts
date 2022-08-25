@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'; 
 import { SkillService } from 'src/app/services/skill.service';
 import { Skill } from "src/app/models/skill.model";
-import { LoginProvisionalAuthenticationService } from 'src/app/services/loginProvisionalAuthentication.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-hard-and-soft-skills',
@@ -23,12 +23,13 @@ export class HardAndSoftSkillsComponent implements OnInit {
 
   constructor(
     private skillService: SkillService,
-    private authProvisionalService: LoginProvisionalAuthenticationService) {
-      this.isLogged = this.authProvisionalService.isLogged;
+    private authService: AuthenticationService) {
+      
     }
 
   ngOnInit(): void {
     this.getSkills();
+    this.isLogged = this.authService.setLogged();
   }
 
   getSkills() {

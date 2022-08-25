@@ -44,12 +44,14 @@
       <div class="description-container">{{ experience.description }}</div>
 
       <div class="img-container">
-        <img
-          [src]="experience.img"
-          [alt]="experience.company"
-          onerror="this.src='https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';"
-          class="img-work"s
-        />
+        <a [href]="experience.url" target="_blank">
+          <img
+            [src]="experience.img"
+            [alt]="experience.company"
+            onerror="this.src='https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';"
+            class="img-work"s
+          />
+        </a>
       </div>
 
     <!---------------------------------------- BOTONES--------------------------------------->

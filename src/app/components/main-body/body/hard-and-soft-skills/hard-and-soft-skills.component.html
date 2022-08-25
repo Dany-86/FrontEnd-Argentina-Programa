@@ -30,21 +30,23 @@
         <h6>{{ skill.skill }}</h6>
       </div>
       <div class="circle-container">
-        <circle-progress
-          [percent]="skill.percent"
-          [radius]="100"
-          [outerStrokeWidth]="15"
-          [innerStrokeWidth]="10"
-          [outerStrokeColor]="skill.colorCircle"
-          [innerStrokeColor]="'#e7e8ea'"
-          [animation]="true"
-          [animationDuration]="300"
-          [showImage]="true"
-          [imageSrc]="skill.img"
-          [imageWidth]="100"
-          [imageHeight]="100"
-          [space]="-10"
-        ></circle-progress>
+        <a [href]="skill.url" target="_blank">
+          <circle-progress
+            [percent]="skill.percent"
+            [radius]="100"
+            [outerStrokeWidth]="15"
+            [innerStrokeWidth]="10"
+            [outerStrokeColor]="skill.colorCircle"
+            [innerStrokeColor]="'#e7e8ea'"
+            [animation]="true"
+            [animationDuration]="300"
+            [showImage]="true"
+            [imageSrc]="skill.img"
+            [imageWidth]="100"
+            [imageHeight]="100"
+            [space]="-10"
+          ></circle-progress>
+        </a>
       </div>
 
 <!------------------------------------- BOTONES -------------------------------------->

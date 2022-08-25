@@ -1,6 +1,4 @@
-// ESTE CLASE DE SERVICIO QUEDA PENDIENTE PARA IMPLEMENTARSE JUNTO A AUTENTICACION CON JWT
-
-import { Injectable } from '@angular/core';
+/* import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from './authentication.service';
@@ -14,10 +12,10 @@ export class InterceptorService implements HttpInterceptor{
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     var currentUser = this.authenticationService.authenticatedUser;
-    if(currentUser && currentUser.accesToken) {
+    if(currentUser && currentUser.accessToken) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${currentUser.accesToken}`
+          Authorization: `Bearer ${currentUser.accessToken}`
         }
       })
     }
@@ -26,3 +24,4 @@ export class InterceptorService implements HttpInterceptor{
     return next.handle(request);
   }
 }
+ */

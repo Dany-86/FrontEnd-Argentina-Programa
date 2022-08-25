@@ -9,23 +9,24 @@ import { Project } from "../models/project.model";
 
 export class ProjectService {
         
-    url: string = "http://localhost:8080/projects/";
+    url: string = "http://localhost:8080/api/";
     constructor(private httpClient: HttpClient) {}
 
       getProjects():Observable<Project[]> { 
-        return this.httpClient.get<Project[]>(this.url + `get/`);
+        return this.httpClient.get<Project[]>(this.url + `projects/get/`);
       }
 
       addProject(newProject: Project):Observable<any> { 
-        return this.httpClient.post<any>(this.url + `add/`, newProject);
+        return this.httpClient.post<any>(this.url + `projects/add/`, newProject);
       }
 
+      // Modificar Actualizar sin id
       editProject(id: number, newProject: Project):Observable<any> { 
-        return this.httpClient.put<any>(this.url + `update/${id}`, newProject);
+        return this.httpClient.put<any>(this.url + `projects/update/${id}`, newProject);
       }
 
       deleteProject(id: number):Observable<any> { 
-        return this.httpClient.delete<any>(this.url + `delete/${id}`);
+        return this.httpClient.delete<any>(this.url + `projects/delete/${id}`);
       }
 
 }

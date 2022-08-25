@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfilePhoto } from 'src/app/models/profilePhoto.model';
-import { PortfolioService } from 'src/app/services/portfolio.service';
 import {
   FormsModule,
   FormGroup,
@@ -12,7 +11,7 @@ import {
 import { ProfilePhotoService } from 'src/app/services/profilePhoto.service';
 import { BackImageService } from 'src/app/services/backImage.service';
 import { BackImage } from 'src/app/models/backImage.model';
-import { LoginProvisionalAuthenticationService } from 'src/app/services/loginProvisionalAuthentication.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-header-images',
@@ -34,13 +33,12 @@ export class HeaderImagesComponent implements OnInit {
   };
 
   constructor(
-    //private portfolioDataService: PortfolioService,
     private profilePhotoService: ProfilePhotoService,
     private backImageService: BackImageService,
     private formBuilder: FormBuilder,
-    private authProvisionalService: LoginProvisionalAuthenticationService
+    private authService: AuthenticationService
   ) {
-    this.isLogged = this.authProvisionalService.isLogged;
+    
     this.profilePhotoForm = this.formBuilder.group({
       url: '',
     });
@@ -52,6 +50,7 @@ export class HeaderImagesComponent implements OnInit {
   ngOnInit(): void {
     this.getProfilePhoto();
     this.getBackImage();
+    this.isLogged = this.authService.setLogged();
   }
 
   getProfilePhoto() {

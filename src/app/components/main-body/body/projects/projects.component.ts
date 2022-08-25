@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from 'src/app/models/project.model';
-import { LoginProvisionalAuthenticationService } from 'src/app/services/loginProvisionalAuthentication.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
@@ -26,13 +26,14 @@ export class ProjectsComponent implements OnInit {
 
   constructor(
     private projectService: ProjectService,
-    private authProvisionalService: LoginProvisionalAuthenticationService
+    private authService: AuthenticationService
     ) {
-    this.isLogged = this.authProvisionalService.isLogged;
+    
   }
 
   ngOnInit(): void {
     this.getProjects();
+    this.isLogged = this.authService.setLogged();
   }
 
   getProjects() {
@@ -84,7 +85,6 @@ export class ProjectsComponent implements OnInit {
       this.projectService.deleteProject(this.id).subscribe( 
       data => { alert("Se borró el proyecto exitosamente");
                 console.log(this.index);
-                //this.projects.splice(this.index, 1);
                 this.getProjects();
               },
       error => { alert("Error: No se pudo borrar el proyecto");

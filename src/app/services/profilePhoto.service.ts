@@ -8,19 +8,16 @@ import { ProfilePhoto } from '../models/profilePhoto.model';
 })
 export class ProfilePhotoService {
   
-  url: string = "http://localhost:8080/profilePhoto/";
+  url: string = "http://localhost:8080/api/";
 
   constructor(private httpClient: HttpClient) {}
 
   getProfilePhoto():Observable<ProfilePhoto> { 
-    return this.httpClient.get<ProfilePhoto>(this.url + `get/`);
+    return this.httpClient.get<ProfilePhoto>(this.url + `profilePhoto/get/`);
   }
 
   changeProfilePhoto(newProfilePhoto: ProfilePhoto):Observable<any> { 
-    return this.httpClient.put<any>(this.url + `update/`, newProfilePhoto);
+    return this.httpClient.put<any>(this.url + `profilePhoto/update/`, newProfilePhoto);
   }
 
-  deleteProfilePhoto():Observable<any> { 
-    return this.httpClient.delete<any>(this.url + `delete/`);
-  }
 }

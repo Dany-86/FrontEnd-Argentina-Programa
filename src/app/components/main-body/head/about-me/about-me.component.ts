@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/services/portfolio.service';
 import { ProfileInfo } from 'src/app/models/profileInfo.model';
 import { AboutMe } from 'src/app/models/aboutMe.model';
 import {
@@ -12,7 +11,7 @@ import {
 } from '@angular/forms';
 import { AboutMeService } from 'src/app/services/aboutMe.service';
 import { ProfileInfoService } from 'src/app/services/profleInfo.service';
-import { LoginProvisionalAuthenticationService } from 'src/app/services/loginProvisionalAuthentication.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-about-me',
@@ -43,14 +42,13 @@ export class AboutMeComponent implements OnInit {
   };
 
   constructor(
-    //private portfolioDataService: PortfolioService,
     private profileInfoService: ProfileInfoService,
     private aboutMeService: AboutMeService,
     private formBuilder: FormBuilder,
-    private authProvisionalService: LoginProvisionalAuthenticationService
+    private authService: AuthenticationService
   ) {
 
-    this.isLogged = this.authProvisionalService.isLogged;
+    
 
     this.profileForm = this.formBuilder.group({
       name: '',
@@ -69,6 +67,7 @@ export class AboutMeComponent implements OnInit {
   ngOnInit(): void {
     this.getProfile();
     this.getAboutMe();
+    this.isLogged = this.authService.setLogged();
   }
 
   getProfile() {

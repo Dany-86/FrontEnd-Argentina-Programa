@@ -9,23 +9,24 @@ import { Skill } from "../models/skill.model";
 
 export class SkillService {
         
-    url: string = "http://localhost:8080/skills/";
+    url: string = "http://localhost:8080/api/";
     constructor(private httpClient: HttpClient) {}
 
       getSkills():Observable<Skill[]> { 
-        return this.httpClient.get<Skill[]>(this.url + `get/`);
+        return this.httpClient.get<Skill[]>(this.url + `skills/get/`);
       }
 
       addSkill(newSkill: Skill):Observable<any> { 
-        return this.httpClient.post<any>(this.url + `add/`, newSkill);
+        return this.httpClient.post<any>(this.url + `skills/add/`, newSkill);
       }
 
+      // Modificar Actualizar sin id
       editSkill(id: number, newSkill: Skill):Observable<any> { 
-        return this.httpClient.put<any>(this.url + `update/${id}`, newSkill);
+        return this.httpClient.put<any>(this.url + `skills/update/${id}`, newSkill);
       }
 
       deleteSkill(id: number):Observable<any> { 
-        return this.httpClient.delete<any>(this.url + `delete/${id}`);
+        return this.httpClient.delete<any>(this.url + `skills/delete/${id}`);
       }
 
 }

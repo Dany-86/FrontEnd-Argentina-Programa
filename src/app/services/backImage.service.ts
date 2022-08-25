@@ -8,19 +8,16 @@ import { BackImage } from '../models/backImage.model';
 })
 export class BackImageService {
   
-  url: string = "http://localhost:8080/backImage/";
+  url: string = "http://localhost:8080/api/";
 
   constructor(private httpClient: HttpClient) {}
 
   getBackImage():Observable<BackImage> { 
-    return this.httpClient.get<BackImage>(this.url + `get/`);
+    return this.httpClient.get<BackImage>(this.url + `backImage/get/`);
   }
 
   changeBackImage(newBackImage: BackImage):Observable<any> { 
-    return this.httpClient.put<any>(this.url + `update/`, newBackImage);
+    return this.httpClient.put<any>(this.url + `backImage/update/`, newBackImage);
   }
 
-  deleteBackImage():Observable<any> { 
-    return this.httpClient.delete<any>(this.url + `delete/`);
-  }
 }

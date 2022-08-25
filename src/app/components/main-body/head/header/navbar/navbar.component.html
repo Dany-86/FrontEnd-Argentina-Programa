@@ -1,6 +1,4 @@
-<!-- PROBLEMS A RESOLVER:       FIXED Y STICKY CON OFF CANVAS Y MODALES DE BOOTSTRAP-->
-
-<!------------------------------ BARRA DE NAVEGACION ESTATICA ------------------------->
+<!----------------------------------- CABECERO -------------------------------------->
 
 <nav class="navbar navbar-expand-sm bg-light">
   <div class="container-fluid">
@@ -128,7 +126,7 @@
         </div>
       </div>
 
-<!----------------------------------------- LOGIN ---------------------------------------->
+<!----------------------------------------- LOGIN/LOGOUT---------------------------------------->
 
       <a *ngIf="!isLogged" routerLink="/login" class="nav-link"
         ><strong>Login</strong></a
@@ -140,7 +138,8 @@
         (click)="onLogOut()"
         ><strong>Logout</strong></a
       >
-<!---------------<app-login></app-login>   NO FUNCIONA CON EL NAVBAR ESTATICO ------------->
     </div>
   </div>
 </nav>
+
+<!---------------------------------------------------------------------------------------------->

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Education } from 'src/app/models/education.model';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { EducationService } from 'src/app/services/education.service';
-import { LoginProvisionalAuthenticationService } from 'src/app/services/loginProvisionalAuthentication.service';
 
 @Component({
   selector: 'app-education',
@@ -25,13 +25,14 @@ export class EducationComponent implements OnInit {
 
   constructor(
     private educationService: EducationService,
-    private authProvisionalService: LoginProvisionalAuthenticationService
+    private authService: AuthenticationService
   ) {
-    this.isLogged = this.authProvisionalService.isLogged;
+    
   }
 
   ngOnInit(): void {
     this.getEducations();
+    this.isLogged = this.authService.setLogged();
   }
 
   getEducations() {
@@ -95,7 +96,6 @@ export class EducationComponent implements OnInit {
         (data) => {
           alert('Se borró la educación exitosamente');
           console.log(this.id);
-          //this.educations.splice(this.index, 1);
           this.getEducations();
         },
         (error) => {

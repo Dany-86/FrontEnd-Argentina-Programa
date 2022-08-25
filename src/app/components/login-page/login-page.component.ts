@@ -1,10 +1,8 @@
-import { ThisReceiver } from '@angular/compiler';
+import { ThisReceiver } from '@angular/compiler'; // PENDIENTE A FUTURO ¿?
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/services/authentication.service'; // PENDIENTE A IMPLEMENTAR CON JWT
-import { LoginProvisionalAuthenticationService } from 'src/app/services/loginProvisionalAuthentication.service';
-import { LoginService } from 'src/app/services/login.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-login-page',
@@ -20,9 +18,7 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private loginService: LoginService,
-    private authProvisionalService: LoginProvisionalAuthenticationService
-    //,private authenticationService: AuthenticationService // PENDIENTE A IMPLEMENTAR CON JWT
+    private authService: AuthenticationService
   ) {
     this.loginForm = this.formBuilder.group({
       mail: ['', [Validators.required, Validators.email]],
@@ -48,17 +44,11 @@ export class LoginPageComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  onSendProvisional(loginForm: any) {
-    this.loginService.Login(loginForm).subscribe((data) => (this.authProvisionalService.LogIn(data)));
-    
-  }
-
-  // METODO PENDIENTE A IMPLEMENTAR CON JWT
-  /* onSend(event: Event): void {
+  onSend(event: Event): void {
     event.preventDefault;
-    this.authenticationService.Login(this.loginForm.value).subscribe(data => {
+    this.authService.Login(this.loginForm.value).subscribe(data => {
       console.log("DATA: " + JSON.stringify(data));
-      this.router.navigate(['/']);
+      this.router.navigate(['home']);
     })
-  } */
+  }
 }

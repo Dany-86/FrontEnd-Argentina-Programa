@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Experience } from 'src/app/models/experience.model';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ExperienceService } from 'src/app/services/experience.service';
-import { LoginProvisionalAuthenticationService } from 'src/app/services/loginProvisionalAuthentication.service';
-import { PortfolioService } from 'src/app/services/portfolio.service';
 
 @Component({
   selector: 'app-experience',
@@ -12,18 +11,7 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
 export class ExperienceComponent implements OnInit {
   
   isLogged: boolean = false;
-  //isLogged = false; VALIDACION PARA EL LOGIN
-  id: number = 0; //ID DE LA EXPERIENCIA EN DB
-  /* position: string = '';
-  company: string = '';
-  img: string = '';
-  url: string = '';
-  since: string = '';
-  to: string = '';
-  description: string = ''; */
-
-  //experiences: Experience[] = [];
-
+  id: number = 0;
   index: number = 0;
   position: string = '';
   company: string = '';
@@ -38,36 +26,17 @@ export class ExperienceComponent implements OnInit {
   addExperienceForm: any;
 
   constructor(
-    //private portfolioDataService: PortfolioService,
-    // ACA SE DEBE INICIALIZAR EL TOKENSERVICE private tokenService: TokenService;
     private experienceService: ExperienceService,
-    private authProvisionalService: LoginProvisionalAuthenticationService
+    private authService: AuthenticationService
   ) {
-    this.isLogged = this.authProvisionalService.isLogged;
+    
   }
-
-  /* ngOnInit(): void {
-    this.portfolioDataService.getData().subscribe(data => this.experiences = data.experiences);
-  } */
 
   ngOnInit(): void {
-
-    /* this.experienceService
-    .getData()
-    .subscribe((data) => (this.experiences = data.experiences));  */ 
-    
-    // INICIA LA VALIDACION POR TOKEN:
-    /* if(this.tokenService.getToken()) {
-      this.isLogged = true;
-    } else {
-      this.isLogged = false;
-    } */
-
     
     this.getExperiences();
-   
+    this.isLogged = this.authService.setLogged();
   }
-
   
   getExperiences() {
     this.experienceService
@@ -75,10 +44,8 @@ export class ExperienceComponent implements OnInit {
       .subscribe((data) => (this.experiences = data));
   }
   
-
-  
   onAddExperience() {
-    const newExperience: Experience = {   // COMPROBAR QUE CONST NO TRAIGA PROBLEMAS
+    const newExperience: Experience = { 
       position: this.position,
       company: this.company,
       img: this.img,
@@ -92,12 +59,11 @@ export class ExperienceComponent implements OnInit {
                 console.log(data);
                 this.getExperiences();}
                 ,
-      err => { alert("Error: No se pudo agregar una nueva experiencia");
-                console.log(err); }); // VER SI FUNCIONA CON error EN VEZ DE err
+      error => { alert("Error: No se pudo agregar una nueva experiencia");
+                console.log(error); }); // VER SI FUNCIONA CON error EN VEZ DE err
                 this.resetAttributes();
                 
   }
-  
 
   onEdit(): void{
     let newExperience: Experience = {
@@ -120,14 +86,12 @@ export class ExperienceComponent implements OnInit {
     this.resetAttributes();
     
   }
-
   
   onDeleteExperience() {
     if(this.id != undefined) {
       this.experienceService.deleteExperience(this.id).subscribe( 
       data => { alert("Se borró la experiencia exitosamente");
                 console.log(this.index);
-                //this.experiences.splice(this.index, 1);
                 this.getExperiences();
               },
       err => { alert("Error: No se pudo borrar la experiencia");
@@ -137,8 +101,7 @@ export class ExperienceComponent implements OnInit {
   }
 
   // OTROS METODOS NECESARIOS:
-
-  // PARA ASIGNAR LOS VALORES DEL SERVICIO A LOS ATRIBUTOS DEL COMPONENTES Y VERLOS EN LA PLANTILLA MODAL
+  // PARA ASIGNAR LOS VALORES DE 'experienceService' A LOS ATRIBUTOS DEL COMPONENTES Y VERLOS EN LA PLANTILLA MODAL
   valuesAsign(i: number, id: any, position: string, company: string, since: string, through: string, description:  string, img: string, url: string) {
     this.index = i;
     this.id = id;
@@ -151,7 +114,7 @@ export class ExperienceComponent implements OnInit {
     this.url = url;
   }
 
-  // PARA ASIGNAR SOLO EL INDICE DE LA ITERACION DEL ARRAY
+  // PARA ASIGNAR SOLO EL INDICE DE LA ITERACION DEL ARRAY 'experiences[]'
   idAndIndexAsign(id: any, i: number): void {
     this.id = id;
     this.index = i;
@@ -170,70 +133,4 @@ export class ExperienceComponent implements OnInit {
     this.url = '';
   }
 
-  
-  // FUNCIONANDO ACTUALMENTE
-
-  /* onAddExperience() {
-    let newExperience: Experience = {
-      position: this.position,
-      company: this.company,
-      img: this.img,
-      url: this.url,
-      since: this.since,
-      to: this.to,
-      description: this.description,
-    };
-    this.experienceService.addExperience(newExperience);
-    this.resetAttributes();
-  } */
-
-  /* onEdit(): void{
-    let newExperience: Experience = {
-      position: this.position, 
-      company: this.company, 
-      since: this.since,
-      to: this.to,
-      description: this.description,
-      img: this.img,
-      url: this.url
-    }
-    this.experienceService.editExperience(this.index, newExperience);
-    this.resetAttributes();
-  } */
-
-  /* onDeleteExperience() {
-    this.experienceService.deleteExperience(this.index);
-    this.resetAttributes();
-  } */
-
-  // OTROS METODOS NECESARIOS:
-
-  // PARA ASIGNAR LOS VALORES DEL SERVICIO A LOS ATRIBUTOS DEL COMPONENTES Y VERLOS EN LA PLANTILLA MODAL
-  /* valuesAsign(i: number, p: string, c: string, s: string, t: string, d:  string, img: string, url: string) {
-    this.index = i;
-    this.position = p;
-    this.company = c;
-    this.since =  s;
-    this.to = t;
-    this.description = d;
-    this.img = img;
-    this.url = url;
-  } */
-
-  // PARA ASIGNAR SOLO EL INDICE DE LA ITERACION DEL ARRAY
-  /* indexAsign(i: number): void {
-    this.index = i;
-  } */
-
-  // PARA RESETEAR TODOS LOS ATRIBUTOS
-  /* resetAttributes() {
-    this.index = 0;
-    this.position = '';
-    this.company = '';
-    this.since =  '';
-    this.to = '';
-    this.description = '';
-    this.img = '';
-    this.url = '';
-  } */
 }

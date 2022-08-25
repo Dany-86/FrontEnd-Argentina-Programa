@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialNetwork } from 'src/app/models/socialNetwork.model';
-import { PortfolioService } from 'src/app/services/portfolio.service';
 import {
   FormsModule,
   FormGroup,
@@ -9,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { SocialNetworkService } from 'src/app/services/socialNetwork.service';
-import { LoginProvisionalAuthenticationService } from 'src/app/services/loginProvisionalAuthentication.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -22,21 +21,15 @@ export class NavbarComponent implements OnInit {
 
   socialNetworksList: SocialNetwork[] = [];
   enabled!: boolean;
-
-  /*  socialNetworkForm = this.formBuilder.group({  no se como asignar valores a los campos link
-   
-  }); */
-
   socialNetworkForm: FormGroup;
 
   constructor(
-    //private portfolioDataService: PortfolioService,
     private formBuilder: FormBuilder,
     private socialNetworkService: SocialNetworkService,
-    private authProvisionalService: LoginProvisionalAuthenticationService
+    private authService: AuthenticationService
   ) {
 
-    this.isLogged = this.authProvisionalService.isLogged;
+   
 
     this.socialNetworkForm = this.formBuilder.group({
       name: '',
@@ -47,6 +40,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLogged = this.authService.setLogged();
     this.getSocialNetworks();
   }
 
@@ -78,7 +72,9 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogOut() {
-    this.authProvisionalService.LogOut();
+    console.log("Cirre en navbar");
+    
+    this.authService.LogOut();
   }
   /* onChangeEnabled() {
     this.socialNetworkService.changeEnabled();

@@ -49,12 +49,14 @@
     </div>
 
     <div class="img-container">
-      <img
-        [src]="project.img"
-        [alt]="project.name"
-        class="img-work"
-        onerror="this.src='https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';"
-      />
+      <a [href]="project.url" target="_blank">
+        <img
+          [src]="project.img"
+          [alt]="project.name"
+          class="img-work"
+          onerror="this.src='https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';"
+        />
+      </a>
     </div>
 
  <!---------------------------------------- BOTONES--------------------------------------->

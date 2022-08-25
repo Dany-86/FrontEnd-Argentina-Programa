@@ -9,23 +9,24 @@ import { Education } from "../models/education.model";
 
 export class EducationService {
         
-    url: string = "http://localhost:8080/educations/";
+    url: string = "http://localhost:8080/api/";
     constructor(private httpClient: HttpClient) {}
 
       getEducations():Observable<Education[]> { 
-        return this.httpClient.get<Education[]>(this.url + `get/`);
+        return this.httpClient.get<Education[]>(this.url + `educations/get/`);
       }
 
       addEducation(newEducation: Education):Observable<any> { 
-        return this.httpClient.post<any>(this.url + `add/`, newEducation);
+        return this.httpClient.post<any>(this.url + `educations/add/`, newEducation);
       }
 
+      // Modificar Actualizar sin id
       editEducation(id: number, newEducation: Education):Observable<any> { 
-        return this.httpClient.put<any>(this.url + `update/${id}`, newEducation);
+        return this.httpClient.put<any>(this.url + `educations/update/${id}`, newEducation);
       }
 
       deleteEducation(id: number):Observable<any> { 
-        return this.httpClient.delete<any>(this.url + `delete/${id}`);
+        return this.httpClient.delete<any>(this.url + `educations/delete/${id}`);
       }
 
 }
