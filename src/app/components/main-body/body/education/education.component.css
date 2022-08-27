@@ -63,7 +63,8 @@ h5 {
 }
 
 .img-institution {
-  max-width: 200px;
+  width: 200px;
+  height: 200px;
   border-radius: 20%;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
   transition: all 200ms ease;

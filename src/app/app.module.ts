@@ -22,7 +22,7 @@ import { ExperienceService } from './services/experience.service';
 import { SocialNetworkService } from './services/socialNetwork.service';
 import { HeadComponent } from './components/main-body/head/head.component';
 import { MainBodyComponent } from './components/main-body/main-body.component';
-// import { InterceptorService } from './services/interceptor.service'; // iNTERCEPTOR PARA MANDAR EL JWT EN HEADER - SOLUCIONAR PROBLEMAS
+ import { InterceptorService } from './services/interceptor.service'; // iNTERCEPTOR PARA MANDAR EL JWT EN HEADER - SOLUCIONAR PROBLEMAS
 import { LoginGuardService } from './services/loginGuard.guard';
 import { AuthenticationService } from './services/authentication.service';
 
@@ -53,7 +53,7 @@ import { AuthenticationService } from './services/authentication.service';
     HttpClientModule
   ],
   providers: [ExperienceService, SocialNetworkService, AuthenticationService, LoginGuardService,
-  // { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true } // iNTERCEPTOR PARA MANDAR EL JWT EN HEADER - SOLUCIONAR PROBLEMAS
+   { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true } // iNTERCEPTOR PARA MANDAR EL JWT EN HEADER - SOLUCIONAR PROBLEMAS
 ],
   bootstrap: [AppComponent]
 })
