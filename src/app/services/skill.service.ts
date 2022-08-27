@@ -21,8 +21,8 @@ export class SkillService {
       }
 
       // Modificar Actualizar sin id
-      editSkill(id: number, newSkill: Skill):Observable<any> { 
-        return this.httpClient.put<any>(this.url + `skills/update/${id}`, newSkill);
+      editSkill(newSkill: Skill):Observable<any> { 
+        return this.httpClient.put<any>(this.url + `skills/update/`, newSkill);
       }
 
       deleteSkill(id: number):Observable<any> { 

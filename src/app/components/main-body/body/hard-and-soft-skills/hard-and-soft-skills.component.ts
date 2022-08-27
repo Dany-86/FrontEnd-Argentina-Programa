@@ -62,7 +62,7 @@ export class HardAndSoftSkillsComponent implements OnInit {
       url: this.url,
       colorCircle: this.colorCircle,
     }
-    this.skillService.editSkill(this.id, newSkill).subscribe(
+    this.skillService.editSkill(newSkill).subscribe(
       data => { alert("Se modificó la habilidad exitosamente.");
                 this.getSkills();}
                 ,

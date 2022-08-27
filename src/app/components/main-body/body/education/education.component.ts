@@ -77,7 +77,7 @@ export class EducationComponent implements OnInit {
       complete: this.complete,
       description: this.description,
     };
-    this.educationService.editEducation(this.id, newEducation).subscribe(
+    this.educationService.editEducation(newEducation).subscribe(
       (data) => {
         alert('Se modificó la educación exitosamente');
         this.getEducations();

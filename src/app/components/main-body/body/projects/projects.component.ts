@@ -71,7 +71,7 @@ export class ProjectsComponent implements OnInit {
       through: this.through,
       description: this.description,
     }
-    this.projectService.editProject(this.id, newProject).subscribe(
+    this.projectService.editProject(newProject).subscribe(
       data => { alert("Se modificó el nuevo proyecto exitosamente");
                 this.getProjects();}
                 ,

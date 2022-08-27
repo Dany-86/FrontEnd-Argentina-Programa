@@ -20,9 +20,8 @@ export class EducationService {
         return this.httpClient.post<any>(this.url + `educations/add/`, newEducation);
       }
 
-      // Modificar Actualizar sin id
-      editEducation(id: number, newEducation: Education):Observable<any> { 
-        return this.httpClient.put<any>(this.url + `educations/update/${id}`, newEducation);
+      editEducation(newEducation: Education):Observable<any> { 
+        return this.httpClient.put<any>(this.url + `educations/update/`, newEducation);
       }
 
       deleteEducation(id: number):Observable<any> { 

@@ -76,7 +76,7 @@ export class ExperienceComponent implements OnInit {
       img: this.img,
       url: this.url
     }
-    this.experienceService.editExperience(this.id, newExperience).subscribe(
+    this.experienceService.editExperience(newExperience).subscribe(
       data => { alert("Se modificó la experiencia exitosamente");
                 console.log(data);
                 this.getExperiences();

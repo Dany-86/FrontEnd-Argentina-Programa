@@ -21,8 +21,8 @@ export class ProjectService {
       }
 
       // Modificar Actualizar sin id
-      editProject(id: number, newProject: Project):Observable<any> { 
-        return this.httpClient.put<any>(this.url + `projects/update/${id}`, newProject);
+      editProject(newProject: Project):Observable<any> { 
+        return this.httpClient.put<any>(this.url + `projects/update/`, newProject);
       }
 
       deleteProject(id: number):Observable<any> { 

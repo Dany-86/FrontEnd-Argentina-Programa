@@ -21,9 +21,8 @@ export class ExperienceService {
         return this.httpClient.post<any>(this.url + `experiences/add/`, newExperience);
       }
 
-      // Modificar Actualizar sin id
-      editExperience(id: number, newExperience: Experience):Observable<any> { 
-        return this.httpClient.put<any>(this.url + `experiences/update/${id}`, newExperience);
+      editExperience(newExperience: Experience):Observable<any> { 
+        return this.httpClient.put<any>(this.url + `experiences/update/`, newExperience);
       }
 
       deleteExperience(id: number):Observable<any> { 
