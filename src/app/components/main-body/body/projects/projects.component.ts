@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from 'src/app/models/project.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ProjectService } from 'src/app/services/project.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-projects',
@@ -26,7 +27,8 @@ export class ProjectsComponent implements OnInit {
 
   constructor(
     private projectService: ProjectService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService, 
+    private toastr: ToastrService
     ) {
     
   }
@@ -52,11 +54,11 @@ export class ProjectsComponent implements OnInit {
       description: this.description,
     };
     this.projectService.addProject(newProject).subscribe(
-      data => { alert("Se agregó un nuevo proyecto exitosamente");
+      data => { this.toastr.success('Se agregó un nuevo proyecto exitosamente.', 'Proyecto');
                 this.getProjects();}
                 ,
-      error => { alert("Error: No se pudo agregar un nuevo proyecto");
-                console.log(error); });
+      error => { this.toastr.error('Error: No se pudo agregar un nuevo proyecto.', 'Proyecto');
+                 });
                 this.resetAttributes();
   }
 
@@ -72,23 +74,23 @@ export class ProjectsComponent implements OnInit {
       description: this.description,
     }
     this.projectService.editProject(newProject).subscribe(
-      data => { alert("Se modificó el nuevo proyecto exitosamente");
+      data => { this.toastr.success('Se modificó el nuevo proyecto exitosamente.', 'Proyecto');
                 this.getProjects();}
                 ,
-      error => { alert("Error: No se pudo modificar el nuevo proyecto");
-                console.log(error); });
+      error => { 
+                  this.toastr.error('Error: No se pudo modificar el nuevo proyecto.',           'Proyecto'); });
     this.resetAttributes();
   }
 
   onDeleteProject() {
     if(this.id != undefined) {
       this.projectService.deleteProject(this.id).subscribe( 
-      data => { alert("Se borró el proyecto exitosamente");
+      data => { this.toastr.success('Se borró el proyecto exitosamente.', 'Proyecto');
                 console.log(this.index);
                 this.getProjects();
               },
-      error => { alert("Error: No se pudo borrar el proyecto");
-                console.log(error); });
+      error => { this.toastr.error('Error: No se pudo borrar el proyect.', 'Proyecto');});
+      
     this.resetAttributes(); 
     }
     

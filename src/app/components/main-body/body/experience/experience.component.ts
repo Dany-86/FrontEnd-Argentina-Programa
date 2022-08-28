@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Experience } from 'src/app/models/experience.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ExperienceService } from 'src/app/services/experience.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-experience',
@@ -27,8 +28,9 @@ export class ExperienceComponent implements OnInit {
 
   constructor(
     private experienceService: ExperienceService,
-    private authService: AuthenticationService
-  ) {
+    private authService: AuthenticationService, 
+    private toastr: ToastrService
+    ) {
     
   }
 
@@ -55,12 +57,13 @@ export class ExperienceComponent implements OnInit {
       description: this.description,
     };
     this.experienceService.addExperience(newExperience).subscribe(
-      data => { alert("Se agregó una nueva experiencia exitosamente");
-                console.log(data);
+      data => { 
+                this.toastr.success('Se agregó una nueva experiencia exitosamente', 'Experiencia');
                 this.getExperiences();}
                 ,
-      error => { alert("Error: No se pudo agregar una nueva experiencia");
-                console.log(error); }); // VER SI FUNCIONA CON error EN VEZ DE err
+      error => { 
+                this.toastr.error('Error: No se pudo agregar la experiencia', 'Experiencia');
+              }); 
                 this.resetAttributes();
                 
   }
@@ -77,12 +80,13 @@ export class ExperienceComponent implements OnInit {
       url: this.url
     }
     this.experienceService.editExperience(newExperience).subscribe(
-      data => { alert("Se modificó la experiencia exitosamente");
-                console.log(data);
+      data => { 
+                this.toastr.success('Se modificó la experiencia exitosamente', 'Experiencia');
                 this.getExperiences();
               },
-      err => { alert("Error: No se pudo modificar la experiencia");
-                console.log(err); });
+      err => { 
+                this.toastr.error('Error: No se pudo modificar la experiencia', 'Experiencia');
+              });
     this.resetAttributes();
     
   }
@@ -90,13 +94,14 @@ export class ExperienceComponent implements OnInit {
   onDeleteExperience() {
     if(this.id != undefined) {
       this.experienceService.deleteExperience(this.id).subscribe( 
-      data => { alert("Se borró la experiencia exitosamente");
-                console.log(this.index);
+      data => { 
+                this.toastr.success('Se borró la experiencia exitosamente', 'Experiencia');
                 this.getExperiences();
               },
-      err => { alert("Error: No se pudo borrar la experiencia");
-                console.log(err); });
-    this.resetAttributes(); // id VA CON SIGNO DE PREGUNTA??
+      err => { 
+                this.toastr.error('Error: No se pudo borrar la experiencia', 'Experiencia');
+              });
+    this.resetAttributes(); 
     }
   }
 
@@ -123,7 +128,7 @@ export class ExperienceComponent implements OnInit {
   // PARA RESETEAR TODOS LOS ATRIBUTOS
   resetAttributes() {
     this.index = 0;
-    this.id = 0; //FUNCIONA ASI??
+    this.id = 0; 
     this.position = '';
     this.company = '';
     this.since =  '';

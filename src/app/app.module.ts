@@ -3,8 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { NgCircleProgressModule } from 'ng-circle-progress';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; // iNTERCEPTOR PARA MANDAR EL JWT EN HEADER - SOLUCIONAR PROBLEMAS
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/main-body/head/header/header.component';
 import { NavbarComponent } from './components/main-body/head/header/navbar/navbar.component';
@@ -22,7 +24,7 @@ import { ExperienceService } from './services/experience.service';
 import { SocialNetworkService } from './services/socialNetwork.service';
 import { HeadComponent } from './components/main-body/head/head.component';
 import { MainBodyComponent } from './components/main-body/main-body.component';
- import { InterceptorService } from './services/interceptor.service'; // iNTERCEPTOR PARA MANDAR EL JWT EN HEADER - SOLUCIONAR PROBLEMAS
+import { InterceptorService } from './services/interceptor.service'; 
 import { LoginGuardService } from './services/loginGuard.guard';
 import { AuthenticationService } from './services/authentication.service';
 
@@ -50,10 +52,16 @@ import { AuthenticationService } from './services/authentication.service';
     NgCircleProgressModule.forRoot({}),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      //progressBar: true,
+      //progressAnimation: 'increasing'
+    }), 
   ],
   providers: [ExperienceService, SocialNetworkService, AuthenticationService, LoginGuardService,
-   { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true } // iNTERCEPTOR PARA MANDAR EL JWT EN HEADER - SOLUCIONAR PROBLEMAS
+   { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
 ],
   bootstrap: [AppComponent]
 })

@@ -96,13 +96,13 @@
                     [(ngModel)]="socialNetwork.enabled"
                   />
                   <label class="form-check-label" for="flexCheckDefault">
-                    {{ socialNetwork.name }}
+                    <b><i><u>{{ socialNetwork.name }}</u></i></b>
                   </label>
                   <div class="container">
-                    <label>Link:</label>
+                    <label><i>Link:</i></label>
                     <input
                       type="text"
-                      class="form-control"
+                      class="form-control mb-4"
                       placeholder=""
                       [(ngModel)]="socialNetwork.url"
                       [disabled]="!socialNetwork.enabled"
@@ -110,6 +110,7 @@
                   </div>
                 </div>
               </div>
+              <hr>
 
               <button
                 type="button"

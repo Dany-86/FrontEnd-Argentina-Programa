@@ -32,6 +32,10 @@ p, h2 {
   padding: 5px;
 }
 
+.about-me-text {
+  padding: 10px 0px;
+}
+
 .profile-text-container,
 .about-me-text-container {
   display: flex;

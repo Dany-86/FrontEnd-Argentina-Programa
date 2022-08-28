@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-page',
@@ -18,7 +19,8 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthenticationService
+    private authService: AuthenticationService, 
+    private toastr: ToastrService
   ) {
     this.loginForm = this.formBuilder.group({
       mail: ['', [Validators.required, Validators.email]],
@@ -47,8 +49,8 @@ export class LoginPageComponent implements OnInit {
   onSend(event: Event): void {
     event.preventDefault;
     this.authService.Login(this.loginForm.value).subscribe(data => {
-      console.log("DATA: " + JSON.stringify(data));
       this.router.navigate(['home']);
+      this.toastr.success('Sesion iniciada', 'BIENVENIDO')
     })
   }
 }

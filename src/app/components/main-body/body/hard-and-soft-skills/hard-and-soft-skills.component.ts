@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SkillService } from 'src/app/services/skill.service';
 import { Skill } from "src/app/models/skill.model";
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-hard-and-soft-skills',
@@ -23,7 +24,9 @@ export class HardAndSoftSkillsComponent implements OnInit {
 
   constructor(
     private skillService: SkillService,
-    private authService: AuthenticationService) {
+    private authService: AuthenticationService, 
+    private toastr: ToastrService
+    ) {
       
     }
 
@@ -46,11 +49,13 @@ export class HardAndSoftSkillsComponent implements OnInit {
       colorCircle: this.colorCircle,
     };
     this.skillService.addSkill(newSkill).subscribe(
-      data => { alert("Se agregó una nueva habilidad exitosamente.");
+      data => { 
+                this.toastr.success('Se agregó una nueva habilidad exitosamente.', 'Habilidad');
                 this.getSkills();}
                 ,
-      error => { alert("Error: No se pudo agregar una nueva habilidad.");
-                console.log(error); });
+      error => {
+                 this.toastr.error('Error: No se pudo agregar una nueva habilidad.', 'Habilidad');
+                 });
   }
 
   onEditSkill(): void{
@@ -63,24 +68,26 @@ export class HardAndSoftSkillsComponent implements OnInit {
       colorCircle: this.colorCircle,
     }
     this.skillService.editSkill(newSkill).subscribe(
-      data => { alert("Se modificó la habilidad exitosamente.");
+      data => { 
+                this.toastr.success('Se modificó la habilidad exitosamente.', 'Habilidad');
                 this.getSkills();}
                 ,
-      error => { alert("Error: No se pudo modificar la habilidad.");
-                console.log(error); });
+      error => { 
+                this.toastr.error('Error: No se pudo modificar la habilidad.', 'Habilidad');
+                });
     this.resetAttributes();
   }
 
   onDeleteSkill() {
     if(this.id != undefined) {
       this.skillService.deleteSkill(this.id).subscribe( 
-      data => { alert("Se borró esta habilidad exitosamente.");
-                console.log(this.index);
-                //this.skills.splice(this.index, 1);
+      data => { 
+      this.toastr.success('Se borró esta habilidad exitosamente.', 'Habilidad');
                 this.getSkills();
               },
-      error => { alert("Error: No se pudo borrar esta habilidad.");
-                console.log(error); });
+      error => { 
+                this.toastr.error('Error: No se pudo borrar esta habilidad.', 'Habilidad');
+                 });
     this.resetAttributes(); 
     }
     

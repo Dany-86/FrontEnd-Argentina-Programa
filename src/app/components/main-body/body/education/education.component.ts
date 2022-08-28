@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Education } from 'src/app/models/education.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { EducationService } from 'src/app/services/education.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-education',
@@ -25,7 +26,8 @@ export class EducationComponent implements OnInit {
 
   constructor(
     private educationService: EducationService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService, 
+    private toastr: ToastrService
   ) {
     
   }
@@ -54,12 +56,11 @@ export class EducationComponent implements OnInit {
     };
     this.educationService.addEducation(newEducation).subscribe(
       (data) => {
-        alert('Se agregó una nueva educación exitosamente');
+        this.toastr.success('Se agregó una nueva educación exitosamente', 'Educación');
         this.getEducations();
       },
       (error) => {
-        alert('Error: No se pudo agregar una nueva educación');
-        console.log(error);
+        this.toastr.error('Error: No se pudo agregar la educación', 'Educación');
       }
     );
     this.resetAttributes();
@@ -79,12 +80,11 @@ export class EducationComponent implements OnInit {
     };
     this.educationService.editEducation(newEducation).subscribe(
       (data) => {
-        alert('Se modificó la educación exitosamente');
+        this.toastr.success('Se modificó la educación exitosamente', 'Educación');
         this.getEducations();
       },
       (error) => {
-        alert('Error: No se pudo modificar la educación');
-        console.log(error);
+        this.toastr.error('Error: No se pudo modificar la educación', 'Educación');
       }
     );
     this.resetAttributes();
@@ -94,13 +94,11 @@ export class EducationComponent implements OnInit {
     if (this.id != undefined) {
       this.educationService.deleteEducation(this.id).subscribe(
         (data) => {
-          alert('Se borró la educación exitosamente');
-          console.log(this.id);
+          this.toastr.success('Se borró la educación exitosamente', 'Educación');
           this.getEducations();
         },
         (error) => {
-          alert('Error: No se pudo borrar la educación');
-          console.log(error);
+          this.toastr.error('Error: No se pudo borrar la educación', 'Educación');
         }
       );
       this.resetAttributes();

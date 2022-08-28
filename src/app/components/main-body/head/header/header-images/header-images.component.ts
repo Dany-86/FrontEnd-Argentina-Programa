@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfilePhoto } from 'src/app/models/profilePhoto.model';
 import {
-  FormsModule,
   FormGroup,
-  FormControl,
-  FormBuilder,
-  Validators,
-  NgForm,
+  FormBuilder
 } from '@angular/forms';
 import { ProfilePhotoService } from 'src/app/services/profilePhoto.service';
 import { BackImageService } from 'src/app/services/backImage.service';
 import { BackImage } from 'src/app/models/backImage.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header-images',
@@ -36,7 +33,8 @@ export class HeaderImagesComponent implements OnInit {
     private profilePhotoService: ProfilePhotoService,
     private backImageService: BackImageService,
     private formBuilder: FormBuilder,
-    private authService: AuthenticationService
+    private authService: AuthenticationService, 
+    private toastr: ToastrService
   ) {
     
     this.profilePhotoForm = this.formBuilder.group({
@@ -76,13 +74,11 @@ export class HeaderImagesComponent implements OnInit {
   onChangePhoto(newProfilePhoto: ProfilePhoto): void {
     this.profilePhotoService.changeProfilePhoto(newProfilePhoto).subscribe(
       (data) => {
-        alert('Se modificó la foto de perfil exitosamente');
-        console.log(data);
+        this.toastr.success('Se modificó la foto de perfil exitosamente', 'Foto de Perfil');
         this.getProfilePhoto();
       },
-      (err) => {
-        alert('Error: No se pudo modificar la foto de perfil');
-        console.log(err);
+      (error) => {
+        this.toastr.error('Error: No se pudo modificar la foto de perfil', 'Foto de Perfil');
       }
     );
   }
@@ -90,12 +86,11 @@ export class HeaderImagesComponent implements OnInit {
   onChangeBackImg(newBackImage: BackImage): void {
     this.backImageService.changeBackImage(newBackImage).subscribe(
       (data) => {
-        alert('Se modificó la portada exitosamente');
+        this.toastr.success('Se modificó la portada exitosamente', 'Portada');
         this.getBackImage();
       },
-      (err) => {
-        alert('Error: No se pudo modificar la portada');
-        console.log(err);
+      (error) => {
+        this.toastr.error('Error: No se pudo modificar la portada', 'Portada');
       }
     );
   }

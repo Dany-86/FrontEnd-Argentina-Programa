@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialNetwork } from 'src/app/models/socialNetwork.model';
 import {
-  FormsModule,
   FormGroup,
-  FormControl,
-  FormBuilder,
-  Validators,
+  FormBuilder
 } from '@angular/forms';
 import { SocialNetworkService } from 'src/app/services/socialNetwork.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar',
@@ -26,7 +24,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private socialNetworkService: SocialNetworkService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService, 
+    private toastr: ToastrService
   ) {
 
    
@@ -53,39 +52,23 @@ export class NavbarComponent implements OnInit {
   onChangeEnabled(i: number, enabled: boolean) {
     if (enabled) {
       this.socialNetworksList[i].enabled = false;
-      //this.socialNetworkService.editSocialNetworks(i, enabled);// se edita directamente, pero deberia hacerlo en submit- corregir-
     } else {
       this.socialNetworksList[i].enabled = true;
-      //this.socialNetworkService.editSocialNetworks(i, enabled);
     }
   }
 
   onEditSocialNetworks() {
     this.socialNetworkService.editSocialNetworks(this.socialNetworksList)
-      .subscribe((data) => { alert("Se agregó una nueva experiencia exitosamente");},
-                 (error) => { alert("Error: No se pudo agregar una nueva experiencia");});
+      .subscribe((data) => { this.toastr.success('Se guardaron los cambios exitosamente', 'Redes');},
+                 (error) => { this.toastr.error('Error: No se se pudieron guardar los cambios', 'Redes');});
   }
 
   onSaveSocialNetworks(): void {
     this.socialNetworkService.editSocialNetworks(this.socialNetworksList);
-    // estos deberia editar todo el form
   }
 
   onLogOut() {
-    console.log("Cirre en navbar");
-    
     this.authService.LogOut();
   }
-  /* onChangeEnabled() {
-    this.socialNetworkService.changeEnabled();
-  }
 
-  onSetIndex(i: number) {
-    this.socialNetworkService.setIndex(i);
-  } ESTO ES PARA INTENTAR HABILITAR O DESHABILITA */
-
-  /*  onPatchValueForm(): void {
-         con este metodo intente asignar valores a los campos link
-  }
- */
 }

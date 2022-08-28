@@ -1,17 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileInfo } from 'src/app/models/profileInfo.model';
 import { AboutMe } from 'src/app/models/aboutMe.model';
-import {
-  FormsModule,
-  FormGroup,
-  FormControl,
-  FormBuilder,
-  Validators,
-  NgForm,
-} from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { AboutMeService } from 'src/app/services/aboutMe.service';
 import { ProfileInfoService } from 'src/app/services/profleInfo.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-about-me',
@@ -19,7 +13,6 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./about-me.component.css'],
 })
 export class AboutMeComponent implements OnInit {
-  //maxChar: number = 100;  como declararlo constante? para hacer contador de caracteres
 
   isLogged: boolean = false;
 
@@ -45,7 +38,8 @@ export class AboutMeComponent implements OnInit {
     private profileInfoService: ProfileInfoService,
     private aboutMeService: AboutMeService,
     private formBuilder: FormBuilder,
-    private authService: AuthenticationService
+    private authService: AuthenticationService, 
+    private toastr: ToastrService
   ) {
 
     
@@ -118,12 +112,11 @@ export class AboutMeComponent implements OnInit {
     console.log(profileForm);
     this.profileInfoService.editProfile(this.profileInfo).subscribe(
       (data) => {
-        alert('Se modificó la informacion de perfil exitosamente');
-        console.log(data);
+        this.toastr.success('Se modificó la informacion de perfil exitosamente', 'Información de Perfil');
+        this.getProfile();
       },
-      (err) => {
-        alert('Error: No se pudo modificar la informacion de perfil');
-        console.log(err);
+      (error) => {
+        this.toastr.error('Error: No se pudo modificar la informacion de perfil', 'Información de Perfil');
       }
     );
   }
@@ -131,12 +124,11 @@ export class AboutMeComponent implements OnInit {
   onSaveAboutMe(newAboutMeForm: AboutMe) {
     this.aboutMeService.editAboutMe(newAboutMeForm).subscribe(
       (data) => {
-        alert('Se modificó la descrpción exitosamente');
+        this.toastr.success('Se modificó la descripción exitosamente', 'Acerca de mi');
         this.getAboutMe();
       },
-      (err) => {
-        alert('Error: No se pudo modificar la descrpción');
-        console.log(err);
+      (error) => {
+        this.toastr.error('Error: No se pudo modificar la descrpción', 'Acerca de mi');
       }
     );
   }

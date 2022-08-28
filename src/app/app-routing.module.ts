@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: '', component: MainBodyComponent, canActivate: [LoginGuardService]},
   {path: 'home', component: MainBodyComponent},
   {path: 'login', component: LoginPageComponent},
-  {path: '**', component: NotFoundComponent}, // ver si se peuede aplicar el concepto de rutas anidadas
+  {path: '**', component: NotFoundComponent}, 
 ];
 
 @NgModule({
