@@ -56,8 +56,6 @@ import { AuthenticationService } from './services/authentication.service';
     BrowserAnimationsModule, 
     ToastrModule.forRoot({
       timeOut: 3000,
-      //progressBar: true,
-      //progressAnimation: 'increasing'
     }), 
   ],
   providers: [ExperienceService, SocialNetworkService, AuthenticationService, LoginGuardService,

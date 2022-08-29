@@ -50,7 +50,7 @@ export class LoginPageComponent implements OnInit {
     event.preventDefault;
     this.authService.Login(this.loginForm.value).subscribe(data => {
       this.router.navigate(['home']);
-      this.toastr.success('Sesion iniciada', 'BIENVENIDO')
+      this.toastr.success('Sesion iniciada', 'BIENVENIDO', {positionClass: 'toast-top-left'})
     })
   }
 }

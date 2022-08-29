@@ -11,15 +11,16 @@
             <strong>{{ profileInfo.profession }}</strong>
           </p>
         </div>
-        <div>
+        <div style="padding-bottom: 10px;">
           <p>
-            {{ profileInfo.location }}, {{ profileInfo.province }},{{
+            {{ profileInfo.location }}, {{ profileInfo.province }}, {{
               profileInfo.country
             }}
           </p>
         </div>
         <div>
-          <a [href]="profileInfo.contact" target="_blank">contacto</a>
+          <a class="btn btn-outline-primary" [href]="'mailto:' + profileInfo.contact" target="_blank" style="padding: 5px;
+          width: 130px;"><i class="fa-solid fa-envelope"></i> Contacto</a>
         </div>
       </div>
 

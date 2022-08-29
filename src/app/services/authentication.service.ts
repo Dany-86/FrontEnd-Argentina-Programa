@@ -29,7 +29,7 @@ export class AuthenticationService {
   LogOut(): void {
     sessionStorage.clear();
     this.router.navigate(['/']);
-    this.toastr.info('Sesion cerrada')
+    this.toastr.info('Hasta luego', 'Sesion Terminada' , {positionClass: 'toast-top-left'})
   }
 
   get authenticatedUser() {

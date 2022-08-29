@@ -56,6 +56,7 @@ export class HardAndSoftSkillsComponent implements OnInit {
       error => {
                  this.toastr.error('Error: No se pudo agregar una nueva habilidad.', 'Habilidad');
                  });
+                 this.resetAttributes(); 
   }
 
   onEditSkill(): void{
