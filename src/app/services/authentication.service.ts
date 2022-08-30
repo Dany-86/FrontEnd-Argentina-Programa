@@ -10,7 +10,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AuthenticationService {
 
-  url: string = "http://localhost:8080/api/login/";
+  
+  // url: string = "http://localhost:8080/api/login/"; // Local
+  url: string = "https://api-myporfolio.herokuapp.com/api/login/"; // Remote
+  
   currentUserSubject: BehaviorSubject<any>; 
 
   constructor(private httpClient: HttpClient, private router: Router, 

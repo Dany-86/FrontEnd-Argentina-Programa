@@ -8,7 +8,8 @@ import { AboutMe } from '../models/aboutMe.model';
 })
 export class AboutMeService {
 
-  url: string = "http://localhost:8080/api/"; 
+  //url: string = "http://localhost:8080/api/"; 
+  url: string = "https://api-myporfolio.herokuapp.com/api/"; // Remote
 
   constructor(private httpClient: HttpClient) {}
 

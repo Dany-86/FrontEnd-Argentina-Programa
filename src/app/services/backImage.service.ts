@@ -8,7 +8,8 @@ import { BackImage } from '../models/backImage.model';
 })
 export class BackImageService {
   
-  url: string = "http://localhost:8080/api/";
+  // url: string = "http://localhost:8080/api/";
+  url: string = "https://api-myporfolio.herokuapp.com/api/"; // Remote
 
   constructor(private httpClient: HttpClient) {}
 

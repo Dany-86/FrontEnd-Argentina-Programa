@@ -8,7 +8,8 @@ import { ProfilePhoto } from '../models/profilePhoto.model';
 })
 export class ProfilePhotoService {
   
-  url: string = "http://localhost:8080/api/";
+  // url: string = "http://localhost:8080/api/";
+  url: string = "https://api-myporfolio.herokuapp.com/api/"; // Remote
 
   constructor(private httpClient: HttpClient) {}
 

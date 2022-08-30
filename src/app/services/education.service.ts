@@ -9,7 +9,9 @@ import { Education } from "../models/education.model";
 
 export class EducationService {
         
-    url: string = "http://localhost:8080/api/";
+    // url: string = "http://localhost:8080/api/";
+    url: string = "https://api-myporfolio.herokuapp.com/api/"; // Remote
+    
     constructor(private httpClient: HttpClient) {}
 
       getEducations():Observable<Education[]> { 
